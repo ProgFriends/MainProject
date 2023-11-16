@@ -35,7 +35,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-
         </activity>
 
         <activity
@@ -47,6 +46,27 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
+        </activity>
+
+        <activity
+            android:name=".CalenderActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".CalenderDetailActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
 
         </activity>
 
