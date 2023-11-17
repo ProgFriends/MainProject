@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CalenderDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,5 +44,14 @@ class CalenderDetailActivity : AppCompatActivity() {
 
         val textView5 = findViewById<TextView>(R.id.textView5)
         textView5.text = selectedDate
+
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            val intent = Intent(this@CalenderDetailActivity, CalenderAddActivity::class.java)
+            intent.putExtra("selectedDate", selectedDate)
+            startActivity(intent)
+        }
+
+
     }
 }
