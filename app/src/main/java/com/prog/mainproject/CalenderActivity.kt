@@ -27,7 +27,7 @@ class CalenderActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.page_home -> {
-                    startActivity(Intent(this@CalenderActivity, MainActivity::class.java))
+                    startActivity(Intent(this@CalenderActivity, FirstHome::class.java))
                     true
                 }
 

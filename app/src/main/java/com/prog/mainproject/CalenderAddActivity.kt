@@ -40,7 +40,7 @@ class CalenderAddActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.page_home -> {
-                    startActivity(Intent(this@CalenderAddActivity, MainActivity::class.java))
+                    startActivity(Intent(this@CalenderAddActivity, FirstHome::class.java))
                     true
                 }
 
