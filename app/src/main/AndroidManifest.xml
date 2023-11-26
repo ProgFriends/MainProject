@@ -13,7 +13,14 @@
         android:theme="@style/Theme.MainProject"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".PestDiagnosisActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FirstHome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,62 +32,60 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".PestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".RegisterInformationActivityActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".CalenderActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".CalenderDetailActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".CalenderAddActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>

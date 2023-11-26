@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class FirstHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.home_first)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
-                    startActivity(Intent(this@MainActivity, CalenderActivity::class.java))
+                    //startActivity(Intent(this@MainActivity, CalenderActivity::class.java))
                     true
                 }
 
