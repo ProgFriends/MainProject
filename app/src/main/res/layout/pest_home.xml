@@ -32,7 +32,7 @@
   </androidx.appcompat.widget.Toolbar>
 
   <Button
-      android:id="@+id/pestbtn"
+      android:id="@+id/buttonCamera"
       android:layout_width="100sp"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
@@ -62,7 +62,7 @@
       android:layout_width="195dp"
       android:layout_height="166dp"
       android:layout_marginBottom="32dp"
-      app:layout_constraintBottom_toTopOf="@+id/pestbtn"
+      app:layout_constraintBottom_toTopOf="@+id/buttonCamera"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +78,32 @@
       app:layout_constraintStart_toStartOf="parent"
       app:menu="@menu/bottom_nav_menu"
       app:itemBackground="@android:color/white" />
+
+  <Button
+      android:id="@+id/buttonGallery"
+      android:layout_width="150sp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:background="@drawable/green_round"
+      android:text="갤러리에서 가져오기"
+      android:textColor="@color/white"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/buttonCamera" />
+
+  <ImageView
+      android:id="@+id/imagePreview"
+      android:layout_width="392dp"
+      android:layout_height="328dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toTopOf="@+id/buttonCamera"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.473"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:layout_constraintVertical_bias="0.567"
+      tools:srcCompat="@tools:sample/avatars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
