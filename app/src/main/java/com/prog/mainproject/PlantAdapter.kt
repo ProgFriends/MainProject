@@ -12,7 +12,7 @@ class PlantAdapter : RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
         Plant(R.drawable.geumjonsu, "금전수"),
         Plant(R.drawable.ttokkkal, "떡갈고무나무"),
         Plant(R.drawable.bakjjwiran, "박쥐란"),
-        Plant(R.drawable.seukip, "스킵답서스"),
+        Plant(R.drawable.seukip, "스킨답서스"),
         Plant(R.drawable.aibi, "아이비"),
         Plant(R.drawable.choljjuk, "철쭉"),
         Plant(R.drawable.kupea, "쿠페아"),
