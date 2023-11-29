@@ -7,7 +7,7 @@
     android:padding="15dp">
 
     <ImageView
-        android:id="@+id/plantImage"
+        android:id="@+id/HomePlantImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/background_radius_16dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/plantName"
+        android:id="@+id/HomePlantName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -28,7 +28,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plantImage"
+        app:layout_constraintStart_toEndOf="@+id/HomePlantImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteX="-16dp" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/HomePlantZzin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -47,8 +47,8 @@
         android:text="철쭉"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/plantImage"
-        app:layout_constraintTop_toBottomOf="@+id/plantName" />
+        app:layout_constraintStart_toEndOf="@+id/HomePlantImage"
+        app:layout_constraintTop_toBottomOf="@+id/HomePlantName" />
 
     <TextView
         android:id="@+id/textView11"
@@ -59,7 +59,7 @@
         android:text="키우기 시작한 지 30일째"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/plantImage"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/HomePlantImage"
+        app:layout_constraintTop_toBottomOf="@+id/HomePlantZzin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
