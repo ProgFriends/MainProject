@@ -3,9 +3,9 @@ package com.prog.mainproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class PestDiagnosisActivity : AppCompatActivity() {
+class PestLeafSpotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_diagnosis)
+        setContentView(R.layout.pest_leafspot)
     }
 }

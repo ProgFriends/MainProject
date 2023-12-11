@@ -81,7 +81,7 @@ class PestActivity : AppCompatActivity() {
             val pred =  Array(1) { FloatArray(classLabels.size) }
             tfLite?.run(inputImg, pred)
 
-            // 예측된 클래스 레이블 가져오기a
+            // 예측된 클래스 레이블 가져오기
             val predictedLabel = getPredictedClassLabel(pred[0])
             Log.d("PestActivity", predictedLabel)
 
@@ -90,11 +90,37 @@ class PestActivity : AppCompatActivity() {
             Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
 
             imgCapture.setImageBitmap(resizedBitmap)
+
+            // 진단서 페이지로 바로 연결
+            startDiagnosisActivity(predictedLabel)
+
         } else if (resultCode == Activity.RESULT_CANCELED) {
             // 사용자가 이미지 캡처를 취소한 경우 처리
             Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         }
     }
+
+    // 진단서 페이지로 연결
+    private fun startDiagnosisActivity(predictedLabel: String) {
+        when (predictedLabel.toLowerCase()) {
+            "leafspot" -> {
+                val intent = Intent(this, PestLeafSpotActivity::class.java)
+                startActivity(intent)
+            }
+            "sootymold" -> {
+                val intent = Intent(this, PestSootyMold::class.java)
+                startActivity(intent)
+            }
+            // 다른 클래스 레이블에 대한 처리 추가
+            // 예: "Mite" -> startActivity(Intent(this, PestMiteActivity::class.java))
+            // ...
+
+            else -> {
+                // 예측된 클래스 레이블에 대한 특별한 처리가 없을 경우에 대한 로직 추가
+            }
+        }
+    }
+
 
     // 갤러리에서 이미지를 선택한 결과를 처리하는 메서드
     private fun handleGalleryResult(resultCode: Int, data: Intent?) {
@@ -189,5 +215,4 @@ class PestActivity : AppCompatActivity() {
             "Unknown"
         }
     }
-
 }
