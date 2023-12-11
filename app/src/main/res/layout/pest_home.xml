@@ -32,7 +32,7 @@
   </androidx.appcompat.widget.Toolbar>
 
   <Button
-      android:id="@+id/buttonCamera"
+      android:id="@+id/btnTakePicture"
       android:layout_width="100sp"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
@@ -62,7 +62,7 @@
       android:layout_width="195dp"
       android:layout_height="166dp"
       android:layout_marginBottom="32dp"
-      app:layout_constraintBottom_toTopOf="@+id/buttonCamera"
+      app:layout_constraintBottom_toTopOf="@+id/btnTakePicture"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
@@ -90,14 +90,14 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/buttonCamera" />
+      app:layout_constraintTop_toBottomOf="@+id/btnTakePicture" />
 
   <ImageView
-      android:id="@+id/imagePreview"
+      android:id="@+id/capturedImage"
       android:layout_width="392dp"
       android:layout_height="328dp"
       android:visibility="visible"
-      app:layout_constraintBottom_toTopOf="@+id/buttonCamera"
+      app:layout_constraintBottom_toTopOf="@+id/btnTakePicture"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.473"
       app:layout_constraintStart_toStartOf="parent"
