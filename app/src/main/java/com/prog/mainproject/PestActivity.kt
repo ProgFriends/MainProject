@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.io.IOException
@@ -60,6 +61,37 @@ class PestActivity : AppCompatActivity() {
             galleryLauncher.launch(galleryIntent)
         }
 
+        val backIcon = findViewById<ImageView>(R.id.back_icon)
+        backIcon.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                finish() // 현재 액티비티 종료
+            }
+        })
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        // 바텀 네비게이션 아이템 클릭 리스너 설정
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.page_home -> {
+                    // 홈 아이템 클릭 시 홈 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@PestActivity, FirstHome::class.java))
+                    true
+                }
+                R.id.page_fv -> {
+                    // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
+                    //startActivity(Intent(this@PestActivity, PestActivity::class.java))
+                    true
+                }
+                R.id.page_ps -> {
+                    // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@PestActivity, CalenderActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun handleImageCaptureResult(resultCode: Int, data: Intent?) {
@@ -121,27 +153,27 @@ class PestActivity : AppCompatActivity() {
                 val intent = Intent(this, PestAphids::class.java)
                 startActivity(intent)
             }
-/*
+
             "healthy" -> {
                 val intent = Intent(this, PestHealthy::class.java)
                 startActivity(intent)
             }
 
             "edit_powdery" -> {
-                val intent = Intent(this, PestEditPowdery::class.java)
+                val intent = Intent(this, PestConfusePowderyMealy::class.java)
                 startActivity(intent)
             }
 
             "new_earlyblight" -> {
-                val intent = Intent(this, PestNewEarlyblight::class.java)
+                val intent = Intent(this, PestEarlyblight::class.java)
                 startActivity(intent)
             }
 
             "new_lateblight" -> {
-                val intent = Intent(this, PestNewLateblight::class.java)
+                val intent = Intent(this, PestLateblight::class.java)
                 startActivity(intent)
             }
- */
+
             // 다른 클래스 레이블에 대한 처리 추가
             // 예: "Mite" -> startActivity(Intent(this, PestMiteActivity::class.java))
             // ...
@@ -195,6 +227,9 @@ class PestActivity : AppCompatActivity() {
         Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
 
         imgCapture.setImageBitmap(resizedBitmap)
+
+        // 진단서 페이지로 바로 연결
+        startDiagnosisActivity(predictedLabel)
     }
 
     private fun rotateBitmap(source: Bitmap, angle: Float): Bitmap {

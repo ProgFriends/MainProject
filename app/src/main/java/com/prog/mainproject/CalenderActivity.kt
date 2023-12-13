@@ -15,7 +15,6 @@ class CalenderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calender)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
-
         backIcon.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 finish() // 현재 액티비티 종료
@@ -27,10 +26,22 @@ class CalenderActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.page_home -> {
+                    // 홈 아이템 클릭 시 홈 화면으로 이동
+                    finish()
                     startActivity(Intent(this@CalenderActivity, FirstHome::class.java))
                     true
                 }
-
+                R.id.page_fv -> {
+                    // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@CalenderActivity, PestActivity::class.java))
+                    true
+                }
+                R.id.page_ps -> {
+                    // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                    //startActivity(Intent(this@CalenderActivity, CalenderActivity::class.java))
+                    true
+                }
                 else -> false
             }
         }

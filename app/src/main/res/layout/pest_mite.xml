@@ -34,7 +34,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -45,7 +45,7 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:padding="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/goCalender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -189,7 +189,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="420dp"
                     android:text="식물 줄기나 잎에 달라붙어 침을 꽂아 세포액을 빨아먹어 식물의 생육 방해."
                     android:textColor="@color/black"
@@ -229,7 +229,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="561dp"
                     android:text="물로 식물 전체를 씻거나 살비제를 골고루 뿌려주세요. \n약의 유해성이 걱정된다면 노른자 또는 식용유가 들어간 마요네즈를 물에 희석해 식물 전체에 뿌려주세요."
                     android:textColor="@color/black"
@@ -240,7 +240,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/goCalender"
         android:layout_width="370dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"

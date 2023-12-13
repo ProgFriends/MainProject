@@ -34,7 +34,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -45,7 +45,7 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:padding="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/goCalender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -188,7 +188,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="390dp"
                     android:text="고온건조한 환경, 환기 부족."
                     android:textColor="@color/black"
@@ -228,7 +228,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="491dp"
                     android:text="벌레를 모두 제거하고 통풍이 잘 되게 해주세요. \n벌레가 조금 있는 경우, 알코올로 가볍게 닦아내거나 물로 씻겨주세요. \n벌레가 많은 경우 친환경 해충약으로 박멸해주세요."
                     android:textColor="@color/black"
@@ -238,7 +238,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/goCalender"
         android:layout_width="370dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"

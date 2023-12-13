@@ -34,7 +34,7 @@ tools:context=".PestLateblight">
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/button5"
+    app:layout_constraintBottom_toTopOf="@+id/goCalender"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@ tools:context=".PestLateblight">
         android:layout_marginTop="0dp"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -55,12 +55,12 @@ tools:context=".PestLateblight">
         <!-- 이미지 블록 추가 -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="740dp">
+            android:layout_height="650dp">
 
             <!-- 진단서 이미지 블록 -->
             <ImageView
                 android:layout_width="370dp"
-                android:layout_height="740dp"
+                android:layout_height="650dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/green_round" />
 
@@ -120,7 +120,7 @@ tools:context=".PestLateblight">
             <!-- 증상 이미지 블록 -->
             <ImageView
                 android:layout_width="340dp"
-                android:layout_height="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="top"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="155dp"
@@ -161,10 +161,10 @@ tools:context=".PestLateblight">
             <!-- 원인 이미지 블록 -->
             <ImageView
                 android:layout_width="340dp"
-                android:layout_height="180dp"
+                android:layout_height="120dp"
                 android:layout_gravity="top"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="320dp"
+                android:layout_marginTop="290dp"
                 android:background="@drawable/light_green_round"
                 android:scaleType="centerCrop" />
 
@@ -174,7 +174,7 @@ tools:context=".PestLateblight">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="325dp"
+                android:layout_marginTop="295dp"
                 android:text="원인"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -185,15 +185,15 @@ tools:context=".PestLateblight">
                 android:layout_height="2dp"
                 android:layout_gravity="top"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="358dp"
+                android:layout_marginTop="328dp"
                 android:background="@drawable/black_back"
                 android:scaleType="centerCrop" />
 
             <TextView
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="370dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="340dp"
                 android:text="토양의 장기간 과한 습도와 배수의 불량으로 인해 진균이 발생함."
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -204,7 +204,7 @@ tools:context=".PestLateblight">
                 android:layout_height="205dp"
                 android:layout_gravity="top"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="515dp"
+                android:layout_marginTop="425dp"
                 android:background="@drawable/light_green_round"
                 android:scaleType="centerCrop" />
 
@@ -214,7 +214,7 @@ tools:context=".PestLateblight">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="520dp"
+                android:layout_marginTop="430dp"
                 android:text="처방전"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -225,17 +225,16 @@ tools:context=".PestLateblight">
                 android:layout_height="2dp"
                 android:layout_gravity="top"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="553dp"
+                android:layout_marginTop="463dp"
                 android:background="@drawable/black_back"
                 android:scaleType="centerCrop" />
 
             <TextView
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="561dp"
-                android:text="토양이 장기간 과하게 습하지 않도록 물 빠짐에 신경 써주세요.\n
-베지크린 입상수화제를 발병 초 7일 간격 물 1L당 0. 4g 희석해서 수확 3일 전까지 3회 이내로 사용해 주세요."
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="471dp"
+                android:text="토양이 장기간 과하게 습하지 않도록 물 빠짐에 신경 써주세요. \n베지크린 입상수화제를 발병 초 7일 간격 물 1L당 0. 4g 희석해서 수확 3일 전까지 3회 이내로 사용해 주세요."
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
@@ -244,7 +243,7 @@ tools:context=".PestLateblight">
 </ScrollView>
 
 <Button
-    android:id="@+id/button5"
+    android:id="@+id/goCalender"
     android:layout_width="370dp"
     android:layout_height="49dp"
     android:layout_marginTop="12dp"

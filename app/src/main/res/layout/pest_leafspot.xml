@@ -34,7 +34,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -45,7 +45,7 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:padding="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/goCalender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -149,7 +149,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="205dp"
                     android:text="주로 잎에서 발생. 발병 초기엔 담갈색 소형반점이 형성되고, 암갈색 타원형 반점으로 확대됨."
                     android:textColor="@color/black"
@@ -189,7 +189,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="370dp"
                     android:text="균이 병든 조직에서 겨울을 지난 후, 분생포자를 형성해 공기전염 함. 고온 다습한 환경에서 영양부족이 지속되면 발생."
                     android:textColor="@color/black"
@@ -229,7 +229,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="561dp"
                     android:text="병든 잎은 떼어내 제거해주세요. \n햇빛이 잘 들고 통풍이 잘 되게 해주세요. \n과습한 상황을 피하고 봄철에는 잎을 잘 살펴 전염되지 않게 해주세요."
                     android:textColor="@color/black"
@@ -240,7 +240,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/goCalender"
         android:layout_width="370dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"

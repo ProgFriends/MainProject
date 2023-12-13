@@ -7,10 +7,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 
-class PestLeafSpotActivity : AppCompatActivity() {
+class PestHealthy : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_leafspot)
+        setContentView(R.layout.pest_healthy)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
@@ -21,7 +21,7 @@ class PestLeafSpotActivity : AppCompatActivity() {
 
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
-            val intent = Intent(this@PestLeafSpotActivity, CalenderAddActivity::class.java)
+            val intent = Intent(this@PestHealthy, CalenderAddActivity::class.java)
             startActivity(intent)
         }
     }

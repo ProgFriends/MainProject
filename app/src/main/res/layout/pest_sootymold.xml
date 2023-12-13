@@ -34,7 +34,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -45,7 +45,7 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:padding="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintBottom_toTopOf="@+id/goCalender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -189,7 +189,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="390dp"
                     android:text="당분을 많이 함유한 액체를 분비하는 해충의 배설물이 묻어 있는 부위에 그을음 모양의 균 또는 곰팡이가 형성."
                     android:textColor="@color/black"
@@ -229,7 +229,7 @@
                 <TextView
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="561dp"
                     android:text="잎에 묻은 분비물을 물로 닦아내 주세요. \n식물을 햇빛이 잘 드는 곳에 두고 통풍이 잘 되게 해주세요. \n당분을 많이 함유한 액체를 분비하는 해충(각종 진딧물) 방제를 철저히 해주세요."
                     android:textColor="@color/black"
@@ -240,7 +240,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/goCalender"
         android:layout_width="370dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"
