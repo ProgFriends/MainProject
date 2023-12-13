@@ -21,6 +21,27 @@
         android:theme="@style/Theme.MainProject"
         tools:targetApi="31">
         <activity
+            android:name=".PestLateblight"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PestEarlyblight"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PestPowdery"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PestSootyMold"
             android:exported="true">
             <meta-data
