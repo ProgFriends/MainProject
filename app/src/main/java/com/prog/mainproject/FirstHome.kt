@@ -3,6 +3,7 @@ package com.prog.mainproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FirstHome : AppCompatActivity() {
@@ -25,5 +26,11 @@ class FirstHome : AppCompatActivity() {
                 else -> false
             }
         }
+        val registerButton = findViewById<Button>(R.id.button)
+        registerButton.setOnClickListener{
+            val intent = Intent(this@FirstHome, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
