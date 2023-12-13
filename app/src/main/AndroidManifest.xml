@@ -21,6 +21,27 @@
         android:theme="@style/Theme.MainProject"
         tools:targetApi="31">
         <activity
+            android:name=".PestMealybug"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PestAphids"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PestMite"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PestSootyMold"
             android:exported="true">
             <meta-data
