@@ -111,6 +111,37 @@ class PestActivity : AppCompatActivity() {
                 val intent = Intent(this, PestSootyMold::class.java)
                 startActivity(intent)
             }
+
+            "Mite" -> {
+                val intent = Intent(this, PestMite::class.java)
+                startActivity(intent)
+            }
+
+            "aphids" -> {
+                val intent = Intent(this, PestAphids::class.java)
+                startActivity(intent)
+            }
+/*
+            "healthy" -> {
+                val intent = Intent(this, PestHealthy::class.java)
+                startActivity(intent)
+            }
+
+            "edit_powdery" -> {
+                val intent = Intent(this, PestEditPowdery::class.java)
+                startActivity(intent)
+            }
+
+            "new_earlyblight" -> {
+                val intent = Intent(this, PestNewEarlyblight::class.java)
+                startActivity(intent)
+            }
+
+            "new_lateblight" -> {
+                val intent = Intent(this, PestNewLateblight::class.java)
+                startActivity(intent)
+            }
+ */
             // 다른 클래스 레이블에 대한 처리 추가
             // 예: "Mite" -> startActivity(Intent(this, PestMiteActivity::class.java))
             // ...
