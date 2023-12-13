@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".PestPowdery">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PestSootyMold">
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent">
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
 
-        <ImageView
-            android:id="@+id/back_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="진단서"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="진단서"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+</androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -36,8 +36,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,12 +55,12 @@
             <!-- 이미지 블록 추가 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="790dp">
+                android:layout_height="740dp">
 
                 <!-- 진단서 이미지 블록 -->
                 <ImageView
                     android:layout_width="370dp"
-                    android:layout_height="790dp"
+                    android:layout_height="740dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/green_round" />
 
@@ -110,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="95dp"
-                    android:text="그을음병"
+                    android:text="흰가루병"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
@@ -118,7 +120,7 @@
                 <!-- 증상 이미지 블록 -->
                 <ImageView
                     android:layout_width="340dp"
-                    android:layout_height="170dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="155dp"
@@ -151,17 +153,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="205dp"
-                    android:text="주로 잎에서 발병. 흑색 곰팡이군이 잎 표면을 덮음. 식물체에 직접적으로 피해를 주지는 않지만, 광합성을 방해해 성장을 방해함."
+                    android:text="식물의 잎과 줄기에 흰가루 형태의 반점이 생김."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <!-- 원인 이미지 블록 -->
                 <ImageView
                     android:layout_width="340dp"
-                    android:layout_height="150dp"
+                    android:layout_height="180dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="340dp"
+                    android:layout_marginTop="320dp"
                     android:background="@drawable/light_green_round"
                     android:scaleType="centerCrop" />
 
@@ -171,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="345dp"
+                    android:layout_marginTop="325dp"
                     android:text="원인"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -182,7 +184,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="378dp"
+                    android:layout_marginTop="358dp"
                     android:background="@drawable/black_back"
                     android:scaleType="centerCrop" />
 
@@ -190,15 +192,15 @@
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="390dp"
-                    android:text="당분을 많이 함유한 액체를 분비하는 해충의 배설물이 묻어 있는 부위에 그을음 모양의 균 또는 곰팡이가 형성."
+                    android:layout_marginTop="370dp"
+                    android:text="식물의 면역체계가 무너져 발생함. \n 또 통풍이 되지 않거나 다소 건조하고 서늘한 조건에서 많이 발생함."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <!-- 처방전 이미지 블록 -->
                 <ImageView
-                    android:layout_width="345dp"
-                    android:layout_height="250dp"
+                    android:layout_width="340dp"
+                    android:layout_height="205dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="515dp"
@@ -231,7 +233,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="561dp"
-                    android:text="잎에 묻은 분비물을 물로 닦아내 주세요. \n식물을 햇빛이 잘 드는 곳에 두고 통풍이 잘 되게 해주세요. \n당분을 많이 함유한 액체를 분비하는 해충(각종 진딧물) 방제를 철저히 해주세요."
+                    android:text="다른 병의 발생을 조장하지 않는 한도 내에서 온도와 습도를 높여주고 통풍에 신경 써주세요.\n
+방제약으로 디노캡과 마이클로뷰타닐 수화제를 사용해 주세요."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
@@ -240,18 +243,18 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="370dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/green_round"
-        android:text="식물기록 하러가기"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+    android:id="@+id/button5"
+    android:layout_width="370dp"
+    android:layout_height="49dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/green_round"
+    android:text="식물기록 하러가기"
+    android:textColor="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

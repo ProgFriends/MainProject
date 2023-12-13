@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PestSootyMold">
+    tools:context=".PestMite">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -53,12 +53,12 @@
             <!-- 이미지 블록 추가 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="790dp">
+                android:layout_height="750dp">
 
                 <!-- 진단서 이미지 블록 -->
                 <ImageView
                     android:layout_width="370dp"
-                    android:layout_height="790dp"
+                    android:layout_height="750dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/green_round" />
 
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="95dp"
-                    android:text="그을음병"
+                    android:text="응애"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
@@ -118,7 +118,7 @@
                 <!-- 증상 이미지 블록 -->
                 <ImageView
                     android:layout_width="340dp"
-                    android:layout_height="170dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="155dp"
@@ -151,17 +151,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="205dp"
-                    android:text="주로 잎에서 발병. 흑색 곰팡이군이 잎 표면을 덮음. 식물체에 직접적으로 피해를 주지는 않지만, 광합성을 방해해 성장을 방해함."
+                    android:text="하얀 가루처럼 잎 뒷면에 붙어있는 모습이 흰가루병과 유사하나, 잎과 주변에 거미줄이 동반됨. 넓게 거미줄을 치는 거미와 달리, 화초나 작물의 잎자루 근방에만 줄을 침."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <!-- 원인 이미지 블록 -->
                 <ImageView
                     android:layout_width="340dp"
-                    android:layout_height="150dp"
+                    android:layout_height="130dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="340dp"
+                    android:layout_marginTop="370dp"
                     android:background="@drawable/light_green_round"
                     android:scaleType="centerCrop" />
 
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="345dp"
+                    android:layout_marginTop="375dp"
                     android:text="원인"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -182,7 +182,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="378dp"
+                    android:layout_marginTop="408dp"
                     android:background="@drawable/black_back"
                     android:scaleType="centerCrop" />
 
@@ -190,15 +190,15 @@
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="390dp"
-                    android:text="당분을 많이 함유한 액체를 분비하는 해충의 배설물이 묻어 있는 부위에 그을음 모양의 균 또는 곰팡이가 형성."
+                    android:layout_marginTop="420dp"
+                    android:text="식물 줄기나 잎에 달라붙어 침을 꽂아 세포액을 빨아먹어 식물의 생육 방해."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
                 <!-- 처방전 이미지 블록 -->
                 <ImageView
                     android:layout_width="345dp"
-                    android:layout_height="250dp"
+                    android:layout_height="210dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="515dp"
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="561dp"
-                    android:text="잎에 묻은 분비물을 물로 닦아내 주세요. \n식물을 햇빛이 잘 드는 곳에 두고 통풍이 잘 되게 해주세요. \n당분을 많이 함유한 액체를 분비하는 해충(각종 진딧물) 방제를 철저히 해주세요."
+                    android:text="물로 식물 전체를 씻거나 살비제를 골고루 뿌려주세요. \n약의 유해성이 걱정된다면 노른자 또는 식용유가 들어간 마요네즈를 물에 희석해 식물 전체에 뿌려주세요."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
