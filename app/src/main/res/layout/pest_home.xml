@@ -91,19 +91,4 @@
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/btnTakePicture" />
-
-  <ImageView
-      android:id="@+id/capturedImage"
-      android:layout_width="392dp"
-      android:layout_height="328dp"
-      android:visibility="visible"
-      app:layout_constraintBottom_toTopOf="@+id/btnTakePicture"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.473"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/toolbar"
-      app:layout_constraintVertical_bias="0.567"
-      tools:srcCompat="@tools:sample/avatars" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

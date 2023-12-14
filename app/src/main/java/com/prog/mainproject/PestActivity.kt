@@ -24,10 +24,17 @@ import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+
 class PestActivity : AppCompatActivity() {
     private lateinit var btnCapture: Button
-    private lateinit var imgCapture: ImageView
     private lateinit var btnUpload: Button
+    private val CAMERA_PERMISSION_REQUEST = 101
+    private val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST = 102
+
 
     private val imageCaptureLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         handleImageCaptureResult(result.resultCode, result.data)
@@ -47,18 +54,29 @@ class PestActivity : AppCompatActivity() {
         setContentView(R.layout.pest_home)
 
         btnCapture = findViewById(R.id.btnTakePicture)
-        imgCapture = findViewById(R.id.capturedImage)
         btnUpload = findViewById(R.id.buttonGallery)
 
         btnCapture.setOnClickListener {
-            val cInt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            imageCaptureLauncher.launch(cInt)
+            // 카메라 권한 확인 및 요청
+            if (checkCameraPermission()) {
+                val cInt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                imageCaptureLauncher.launch(cInt)
+            } else {
+                requestCameraPermission()
+            }
+
         }
 
         btnUpload.setOnClickListener {
-            // 갤러리에서 이미지 선택을 위한 Intent 생성
-            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            galleryLauncher.launch(galleryIntent)
+            // 갤러리 권한 확인 및 요청
+            if (checkReadExternalStoragePermission()) {
+                // 갤러리에서 이미지 선택을 위한 Intent 생성
+                val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                galleryLauncher.launch(galleryIntent)
+            } else {
+                requestReadExternalStoragePermission()
+            }
+
         }
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
@@ -121,8 +139,6 @@ class PestActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
             Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
 
-            imgCapture.setImageBitmap(resizedBitmap)
-
             // 진단서 페이지로 바로 연결
             startDiagnosisActivity(predictedLabel)
 
@@ -131,6 +147,7 @@ class PestActivity : AppCompatActivity() {
             Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         }
     }
+
 
     // 진단서 페이지로 연결
     private fun startDiagnosisActivity(predictedLabel: String) {
@@ -199,6 +216,46 @@ class PestActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkCameraPermission(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
+    }
+
+    private fun checkReadExternalStoragePermission(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
+    }
+
+    // 카메라 권한 허용
+    private fun requestCameraPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.CAMERA),
+            CAMERA_PERMISSION_REQUEST
+        )
+    }
+
+    // 갤러리 권한 허용
+    private fun requestReadExternalStoragePermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+            READ_EXTERNAL_STORAGE_PERMISSION_REQUEST
+        )
+    }
+
     // 선택한 이미지에 대해 진단을 수행하는 메서드
     private fun performDiagnosis(selectedBitmap: Bitmap) {
         // 이 부분에서 선택한 이미지에 대한 진단을 수행
@@ -225,8 +282,6 @@ class PestActivity : AppCompatActivity() {
         // 토스트 메시지로 예측된 클래스 레이블 출력
         Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
         Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
-
-        imgCapture.setImageBitmap(resizedBitmap)
 
         // 진단서 페이지로 바로 연결
         startDiagnosisActivity(predictedLabel)
