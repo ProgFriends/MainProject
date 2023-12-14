@@ -161,7 +161,7 @@ class PestActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            "Mite" -> {
+            "mite" -> {
                 val intent = Intent(this, PestMite::class.java)
                 startActivity(intent)
             }
