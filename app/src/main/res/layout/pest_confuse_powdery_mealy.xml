@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="흰가루병, 흰솜깍지벌레 중 선택해주세요!"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="흰가루병, 흰솜깍지벌레 중 선택해주세요!"
+                android:text="정확한 진단을 위해 선택해주세요!"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -77,8 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="100dp"
-                android:text="벌레는 안 보인다면?"
+                android:layout_marginTop="200dp"
+                android:text="흰 벌레가 보이나요?"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -88,24 +88,16 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="270dp"
                 android:background="@drawable/green_round"
-                android:text="흰가루병 진단페이지로 가기"
+                android:text="예"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="300dp"
-                android:text="벌레가 보인다면?"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+
 
 
             <Button
@@ -115,7 +107,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="350dp"
                 android:background="@drawable/green_round"
-                android:text="흰솜깍지벌레 진단페이지로 가기"
+                android:text="아니요"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
