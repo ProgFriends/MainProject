@@ -136,7 +136,7 @@ class PestActivity : AppCompatActivity() {
             Log.d("PestActivity", predictedLabel)
 
             // 토스트 메시지로 예측된 클래스 레이블 출력
-            Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
+            //Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
             Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
 
             // 진단서 페이지로 바로 연결
@@ -144,7 +144,7 @@ class PestActivity : AppCompatActivity() {
 
         } else if (resultCode == Activity.RESULT_CANCELED) {
             // 사용자가 이미지 캡처를 취소한 경우 처리
-            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -212,7 +212,7 @@ class PestActivity : AppCompatActivity() {
             // 선택한 이미지에 대해 진단 수행
             performDiagnosis(selectedBitmap)
         } else if (resultCode == Activity.RESULT_CANCELED) {
-            Toast.makeText(this, "Gallery selection cancelled", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "Gallery selection cancelled", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -280,7 +280,7 @@ class PestActivity : AppCompatActivity() {
         Log.d("PestActivity", predictedLabel)
 
         // 토스트 메시지로 예측된 클래스 레이블 출력
-        Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
+        //Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
         Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
 
         // 진단서 페이지로 바로 연결

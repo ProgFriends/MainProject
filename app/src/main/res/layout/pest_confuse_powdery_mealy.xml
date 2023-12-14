@@ -84,7 +84,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/goPowdery"
+                android:id="@+id/goMealybug"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -101,7 +101,7 @@
 
 
             <Button
-                android:id="@+id/goMealybug"
+                android:id="@+id/goPowdery"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
