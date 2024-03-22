@@ -67,7 +67,9 @@ class PestActivity : AppCompatActivity() {
         }
 
         btnUpload.setOnClickListener {
+            // 갤러리 권한 확인 및 요청
             if (checkReadExternalStoragePermission()) {
+                // 갤러리에서 이미지 선택을 위한 Intent 생성
                 val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 galleryLauncher.launch(galleryIntent)
             } else {
@@ -75,7 +77,13 @@ class PestActivity : AppCompatActivity() {
             }
         }
 
-        // BottomNavigationView 및 클릭 리스너 설정
+        val backIcon = findViewById<ImageView>(R.id.back_icon)
+        backIcon.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                finish() // 현재 액티비티 종료
+            }
+        })
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         // 바텀 네비게이션 아이템 클릭 리스너 설정
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -104,7 +112,9 @@ class PestActivity : AppCompatActivity() {
     }
 
     private fun handleImageCaptureResult(resultCode: Int, data: Intent?) {
+        Log.d("PestActivity", "enter handler")
         if (resultCode == Activity.RESULT_OK) {
+            // 이미지 캡처 성공 처리
             val bp = data?.extras?.get("data") as Bitmap
             val rotatedBitmap = rotateBitmap(bp, 90f)
             val cx = 150
@@ -134,31 +144,66 @@ class PestActivity : AppCompatActivity() {
         }
     }
 
+
+    // 갤러리에서 이미지를 선택한 결과를 처리하는 메서드
     private fun handleGalleryResult(resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
             val selectedImageUri = data?.data
+            // 선택한 이미지 URI를 이용하여 해당 이미지를 비트맵으로 가져온다.
             val selectedBitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+
+            // 선택한 이미지에 대해 진단 수행
             performDiagnosis(selectedBitmap)
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            //Toast.makeText(this, "Gallery selection cancelled", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun checkCameraPermission(): Boolean {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
     }
 
     private fun checkReadExternalStoragePermission(): Boolean {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
     }
 
+    // 카메라 권한 허용
     private fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.CAMERA),
+            CAMERA_PERMISSION_REQUEST
+        )
     }
 
+    // 갤러리 권한 허용
     private fun requestReadExternalStoragePermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_EXTERNAL_STORAGE_PERMISSION_REQUEST)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+            READ_EXTERNAL_STORAGE_PERMISSION_REQUEST
+        )
     }
 
+    // 선택한 이미지에 대해 진단을 수행하는 메서드
     private fun performDiagnosis(selectedBitmap: Bitmap) {
+        // 이 부분에서 선택한 이미지에 대한 진단을 수행
+        // 예를 들어, 위의 handleImageCaptureResult 메서드와 유사한 코드를 사용할 수 있음
+        // 이 코드는 선택한 이미지에 대해 진단을 수행하고 결과를 출력하는 부분을 나타냅니다.
         val rotatedBitmap = rotateBitmap(selectedBitmap, 90f)
         val cx = 150
         val cy = 150
@@ -197,6 +242,7 @@ class PestActivity : AppCompatActivity() {
         inputImg.order(ByteOrder.nativeOrder())
 
         for (pixel in pixels) {
+            // 수정: putInt 대신 putFloat를 사용해야 합니다.
             inputImg.putFloat(((pixel shr 16) and 0xff) / 255.0f)
             inputImg.putFloat(((pixel shr 8) and 0xff) / 255.0f)
             inputImg.putFloat((pixel and 0xff) / 255.0f)
