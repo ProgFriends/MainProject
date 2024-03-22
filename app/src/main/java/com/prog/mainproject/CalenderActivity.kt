@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class CalenderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calender)
+        setContentView(R.layout.calender_home)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

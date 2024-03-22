@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.app.DatePickerDialog
 import android.widget.Button
-import android.widget.DatePicker
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,7 +16,7 @@ class CalenderAddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calender_add)
+        setContentView(R.layout.calender_add)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

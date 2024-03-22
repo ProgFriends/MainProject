@@ -8,7 +8,7 @@ import android.widget.ImageView
 class RegisterInformationActivityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_information)
+        setContentView(R.layout.register_information)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
 

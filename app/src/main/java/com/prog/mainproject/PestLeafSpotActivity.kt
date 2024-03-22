@@ -10,7 +10,7 @@ import android.widget.ImageView
 class PestLeafSpotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_leafspot)
+        setContentView(R.layout.pestdiagnosis_leafspot)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

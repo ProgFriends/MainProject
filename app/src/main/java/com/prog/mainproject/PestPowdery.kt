@@ -10,7 +10,7 @@ import android.widget.ImageView
 class PestPowdery : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_powdery)
+        setContentView(R.layout.pestdiagnosis_powdery)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

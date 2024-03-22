@@ -10,7 +10,7 @@ import android.widget.ImageView
 class PestEarlyblight : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_earlyblight)
+        setContentView(R.layout.pestdiagnosis_earlyblight)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

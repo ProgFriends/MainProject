@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class CalenderDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calender_detail)
+        setContentView(R.layout.calender_detail)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

@@ -10,7 +10,7 @@ import android.widget.ImageView
 class PestHealthy : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_healthy)
+        setContentView(R.layout.pestdiagnosis_healthy)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {

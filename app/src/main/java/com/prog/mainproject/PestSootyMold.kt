@@ -10,7 +10,7 @@ import android.widget.ImageView
 class PestSootyMold : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pest_sootymold)
+        setContentView(R.layout.pestdiagnosis_sootymold)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
