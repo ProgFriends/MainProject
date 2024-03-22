@@ -1,7 +1,9 @@
 package com.prog.mainproject
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.AssetFileDescriptor
 import android.graphics.Bitmap
 import android.graphics.Matrix
@@ -12,22 +14,16 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
-import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
-
-import android.Manifest
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 
 class PestActivity : AppCompatActivity() {
     private lateinit var btnCapture: Button
@@ -35,6 +31,12 @@ class PestActivity : AppCompatActivity() {
     private val CAMERA_PERMISSION_REQUEST = 101
     private val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST = 102
 
+    private val originalModelPath = "all.tflite"
+    private val newModelPath = "2.tflite"
+    private lateinit var originalTfLite: Interpreter
+    private lateinit var newTfLite: Interpreter
+    private val originalClassLabels = arrayOf("Earlyblight", "Lateblight", "LeafSpot", "Mite", "SootyMold", "aphids", "healthy", "powdery")
+    private val newClassLabels = arrayOf("LeafSpot", "Earlyblight", "Lateblight")
 
     private val imageCaptureLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         handleImageCaptureResult(result.resultCode, result.data)
@@ -44,48 +46,36 @@ class PestActivity : AppCompatActivity() {
         handleGalleryResult(result.resultCode, result.data)
     }
 
-    private val ImageCaptureCode = 1
-
-    // 클래스 레이블 정의
-    private val classLabels = arrayOf("LeafSpot", "Mite", "SootyMold", "aphids", "edit_powdery", "healthy", "new_earlyblight", "new_lateblight")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pest_home)
+
+        originalTfLite = getTfliteInterpreter(originalModelPath)
+        newTfLite = getTfliteInterpreter(newModelPath)
+        Log.d("PestActivity", "New Model Interpreter: $newTfLite")
 
         btnCapture = findViewById(R.id.btnTakePicture)
         btnUpload = findViewById(R.id.buttonGallery)
 
         btnCapture.setOnClickListener {
-            // 카메라 권한 확인 및 요청
             if (checkCameraPermission()) {
                 val cInt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 imageCaptureLauncher.launch(cInt)
             } else {
                 requestCameraPermission()
             }
-
         }
 
         btnUpload.setOnClickListener {
-            // 갤러리 권한 확인 및 요청
             if (checkReadExternalStoragePermission()) {
-                // 갤러리에서 이미지 선택을 위한 Intent 생성
                 val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 galleryLauncher.launch(galleryIntent)
             } else {
                 requestReadExternalStoragePermission()
             }
-
         }
 
-        val backIcon = findViewById<ImageView>(R.id.back_icon)
-        backIcon.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                finish() // 현재 액티비티 종료
-            }
-        })
-
+        // BottomNavigationView 및 클릭 리스너 설정
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         // 바텀 네비게이션 아이템 클릭 리스너 설정
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -110,12 +100,11 @@ class PestActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
     }
 
     private fun handleImageCaptureResult(resultCode: Int, data: Intent?) {
-        Log.d("PestActivity", "enter handler")
         if (resultCode == Activity.RESULT_OK) {
-            // 이미지 캡처 성공 처리
             val bp = data?.extras?.get("data") as Bitmap
             val rotatedBitmap = rotateBitmap(bp, 90f)
             val cx = 150
@@ -125,142 +114,51 @@ class PestActivity : AppCompatActivity() {
             resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
             val inputImg = getInputImage(pixels, cx, cy)
 
-            val tfLite = getTfliteInterpreter("main.tflite")
-            Log.d("PestActivity", "load model")
+            val originalPred = Array(1) { FloatArray(originalClassLabels.size) }
+            originalTfLite.run(inputImg, originalPred)
 
-            val pred =  Array(1) { FloatArray(classLabels.size) }
-            tfLite?.run(inputImg, pred)
+            val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
 
-            // 예측된 클래스 레이블 가져오기
-            val predictedLabel = getPredictedClassLabel(pred[0])
-            Log.d("PestActivity", predictedLabel)
-
-            // 토스트 메시지로 예측된 클래스 레이블 출력
-            //Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
-            Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
-
-            // 진단서 페이지로 바로 연결
-            startDiagnosisActivity(predictedLabel)
-
-        } else if (resultCode == Activity.RESULT_CANCELED) {
-            // 사용자가 이미지 캡처를 취소한 경우 처리
-            //Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
-        }
-    }
-
-
-    // 진단서 페이지로 연결
-    private fun startDiagnosisActivity(predictedLabel: String) {
-        when (predictedLabel.toLowerCase()) {
-            "leafspot" -> {
-                val intent = Intent(this, PestLeafSpotActivity::class.java)
-                startActivity(intent)
-            }
-            "sootymold" -> {
-                val intent = Intent(this, PestSootyMold::class.java)
-                startActivity(intent)
-            }
-
-            "Mite" -> {
-                val intent = Intent(this, PestMite::class.java)
-                startActivity(intent)
-            }
-
-            "aphids" -> {
-                val intent = Intent(this, PestAphids::class.java)
-                startActivity(intent)
-            }
-
-            "healthy" -> {
-                val intent = Intent(this, PestHealthy::class.java)
-                startActivity(intent)
-            }
-
-            "edit_powdery" -> {
-                val intent = Intent(this, PestConfusePowderyMealy::class.java)
-                startActivity(intent)
-            }
-
-            "new_earlyblight" -> {
-                val intent = Intent(this, PestEarlyblight::class.java)
-                startActivity(intent)
-            }
-
-            "new_lateblight" -> {
-                val intent = Intent(this, PestLateblight::class.java)
-                startActivity(intent)
-            }
-
-            // 다른 클래스 레이블에 대한 처리 추가
-            // 예: "Mite" -> startActivity(Intent(this, PestMiteActivity::class.java))
-            // ...
-
-            else -> {
-                // 예측된 클래스 레이블에 대한 특별한 처리가 없을 경우에 대한 로직 추가
+            // If the predicted label is one of the first three labels,
+            // use the new model for re-prediction
+            if (originalPredictedLabel in arrayOf("Earlyblight", "Lateblight", "LeafSpot")) {
+                val newPred = Array(1) { FloatArray(3) } // LeafSpot, Earlyblight, Lateblight
+                newTfLite.run(inputImg, newPred)
+                val newPredictedLabel = getPredictedClassLabel(newPred[0])
+                Log.d("PestActivity", "New Model Prediction: $newPredictedLabel")
+                startDiagnosisActivity(newPredictedLabel)
+            } else {
+                Log.d("PestActivity", "Original Model Prediction: $originalPredictedLabel")
+                startDiagnosisActivity(originalPredictedLabel)
             }
         }
     }
 
-
-    // 갤러리에서 이미지를 선택한 결과를 처리하는 메서드
     private fun handleGalleryResult(resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
             val selectedImageUri = data?.data
-            // 선택한 이미지 URI를 이용하여 해당 이미지를 비트맵으로 가져온다.
             val selectedBitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
-
-            // 선택한 이미지에 대해 진단 수행
             performDiagnosis(selectedBitmap)
-        } else if (resultCode == Activity.RESULT_CANCELED) {
-            //Toast.makeText(this, "Gallery selection cancelled", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun checkCameraPermission(): Boolean {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            return true
-        }
-        return false
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun checkReadExternalStoragePermission(): Boolean {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            return true
-        }
-        return false
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
     }
 
-    // 카메라 권한 허용
     private fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.CAMERA),
-            CAMERA_PERMISSION_REQUEST
-        )
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST)
     }
 
-    // 갤러리 권한 허용
     private fun requestReadExternalStoragePermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-            READ_EXTERNAL_STORAGE_PERMISSION_REQUEST
-        )
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_EXTERNAL_STORAGE_PERMISSION_REQUEST)
     }
 
-    // 선택한 이미지에 대해 진단을 수행하는 메서드
     private fun performDiagnosis(selectedBitmap: Bitmap) {
-        // 이 부분에서 선택한 이미지에 대한 진단을 수행
-        // 예를 들어, 위의 handleImageCaptureResult 메서드와 유사한 코드를 사용할 수 있음
-        // 이 코드는 선택한 이미지에 대해 진단을 수행하고 결과를 출력하는 부분을 나타냅니다.
         val rotatedBitmap = rotateBitmap(selectedBitmap, 90f)
         val cx = 150
         val cy = 150
@@ -269,22 +167,23 @@ class PestActivity : AppCompatActivity() {
         resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
         val inputImg = getInputImage(pixels, cx, cy)
 
-        val tfLite = getTfliteInterpreter("main.tflite")
-        Log.d("PestActivity", "load model")
+        val originalPred = Array(1) { FloatArray(originalClassLabels.size) }
+        originalTfLite.run(inputImg, originalPred)
 
-        val pred = Array(1) { FloatArray(classLabels.size) }
-        tfLite?.run(inputImg, pred)
+        val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
 
-        // 예측된 클래스 레이블 가져오기
-        val predictedLabel = getPredictedClassLabel(pred[0])
-        Log.d("PestActivity", predictedLabel)
-
-        // 토스트 메시지로 예측된 클래스 레이블 출력
-        //Toast.makeText(applicationContext, "Predicted Label: $predictedLabel", Toast.LENGTH_LONG).show()
-        Log.d("PestActivity1", "Prediction Array: ${pred.contentDeepToString()}")
-
-        // 진단서 페이지로 바로 연결
-        startDiagnosisActivity(predictedLabel)
+        // If the predicted label is one of the first three labels,
+        // use the new model for re-prediction
+        if (originalPredictedLabel in arrayOf("Earlyblight", "Lateblight", "LeafSpot")) {
+            val newPred = Array(1) { FloatArray(3) } // LeafSpot, Earlyblight, Lateblight
+            newTfLite.run(inputImg, newPred)
+            val newPredictedLabel = getPredictedClassLabel(newPred[0])
+            Log.d("PestActivity", "New Model Prediction: $newPredictedLabel")
+            startDiagnosisActivity(newPredictedLabel)
+        } else {
+            Log.d("PestActivity", "Original Model Prediction: $originalPredictedLabel")
+            startDiagnosisActivity(originalPredictedLabel)
+        }
     }
 
     private fun rotateBitmap(source: Bitmap, angle: Float): Bitmap {
@@ -298,7 +197,6 @@ class PestActivity : AppCompatActivity() {
         inputImg.order(ByteOrder.nativeOrder())
 
         for (pixel in pixels) {
-            // 수정: putInt 대신 putFloat를 사용해야 합니다.
             inputImg.putFloat(((pixel shr 16) and 0xff) / 255.0f)
             inputImg.putFloat(((pixel shr 8) and 0xff) / 255.0f)
             inputImg.putFloat((pixel and 0xff) / 255.0f)
@@ -307,33 +205,74 @@ class PestActivity : AppCompatActivity() {
         return inputImg
     }
 
-
-    private fun getTfliteInterpreter(modelPath: String): Interpreter? {
-        try {
-            return Interpreter(loadModelFile(modelPath))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return null
-    }
-
-    private fun loadModelFile(modelPath: String): MappedByteBuffer {
+    private fun getTfliteInterpreter(modelPath: String): Interpreter {
         val fileDescriptor: AssetFileDescriptor = assets.openFd(modelPath)
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel: FileChannel = inputStream.channel
         val startOffset: Long = fileDescriptor.startOffset
         val declaredLength: Long = fileDescriptor.declaredLength
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
+        val buffer: ByteBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
+        return Interpreter(buffer)
     }
 
     private fun getPredictedClassLabel(predictions: FloatArray): String {
-        val maxIndex = predictions.indices.maxBy { predictions[it] } ?: -1
-        Log.d("PestActivity", maxIndex.toString())
-        return if (maxIndex != -1 && maxIndex < classLabels.size) {
-            // 수정: 대소문자 구분하지 않도록 변경
-            classLabels[maxIndex].toLowerCase()
+        val maxIndex = predictions.indices.maxByOrNull { predictions[it] } ?: -1
+        return if (maxIndex != -1) {
+            if (maxIndex < 3) {
+                // Use the labels of the new model
+                newClassLabels[maxIndex]
+            } else {
+                // Use the labels of the original model
+                originalClassLabels[maxIndex]
+            }
         } else {
             "Unknown"
+        }
+    }
+
+
+    // 진단서 페이지로 연결
+    private fun startDiagnosisActivity(predictedLabel: String) {
+        // 클래스 레이블에 따른 액티비티 호출
+        when (predictedLabel.toLowerCase()) {
+            "leafspot" -> {
+                val intent = Intent(this, PestLeafSpotActivity::class.java)
+                startActivity(intent)
+            }
+            "sootymold" -> {
+                val intent = Intent(this, PestSootyMold::class.java)
+                startActivity(intent)
+            }
+            "mite" -> {
+                val intent = Intent(this, PestMite::class.java)
+                startActivity(intent)
+            }
+            "aphids" -> {
+                val intent = Intent(this, PestAphids::class.java)
+                startActivity(intent)
+            }
+            "healthy" -> {
+                val intent = Intent(this, PestHealthy::class.java)
+                startActivity(intent)
+            }
+            "powdery" -> {
+                val intent = Intent(this, PestConfusePowderyMealy::class.java)
+                startActivity(intent)
+            }
+            "earlyblight" -> {
+                val intent = Intent(this, PestEarlyblight::class.java)
+                startActivity(intent)
+            }
+            "lateblight" -> {
+                val intent = Intent(this, PestLateblight::class.java)
+                startActivity(intent)
+            }
+            // 다른 클래스 레이블에 대한 처리 추가
+            // 예: "Mite" -> startActivity(Intent(this, PestMiteActivity::class.java))
+            // ...
+            else -> {
+                // 예측된 클래스 레이블에 대한 특별한 처리가 없을 경우에 대한 로직 추가
+            }
         }
     }
 }
