@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".LoginActivity">
+
 
     <EditText
-        android:id="@+id/editText_Regi_EMAIL"
+        android:id="@+id/editText_Login_EMAIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -20,41 +21,39 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editText_Regi_PW"
+        android:id="@+id/editText_Login_PW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:ems="10"
-        android:hint="비밀번호(6자 이상)"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Regi_EMAIL"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/editText_Regi_PW2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="비밀번호 확인"
+        android:hint="비번"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Regi_PW"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Login_EMAIL"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/Btn_Register"
+        android:id="@+id/Btn_GoRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="가입하기"
+        android:layout_marginTop="40dp"
+        android:text="회원가입"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Regi_PW2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Login_PW" />
+
+    <Button
+        android:id="@+id/Btn_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="로그인"
+        app:layout_constraintEnd_toStartOf="@+id/Btn_GoRegister"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Btn_GoRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

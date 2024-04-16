@@ -6,32 +6,75 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/plantImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="5dp"
+        android:id="@+id/ImgV_Plant"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_radius_16dp"
+        android:clipToOutline="true"
+        android:contentDescription="PlantImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/plantName"
+        android:id="@+id/TV_PlantName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/black"
-        android:textSize="15sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plantImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/ImgV_Plant"
+        app:layout_constraintTop_toTopOf="@+id/ImgV_Plant"
+        tools:text="PlantName" />
 
-    <Space
+    <TextView
+        android:id="@+id/TV_PlantSpecies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ImgV_Plant"
+        app:layout_constraintTop_toBottomOf="@+id/TV_PlantName"
+        tools:text="PlantSpecies" />
+
+    <TextView
+        android:id="@+id/TV_Dday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ImgV_Plant"
+        app:layout_constraintTop_toBottomOf="@+id/TV_PlantSpecies"
+        tools:text="Day" />
+
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        app:layout_constraintTop_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:layout_height="5dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImgV_Plant" />
+
+    <ImageButton
+        android:id="@+id/Btn_Delete"
+        android:layout_width="43dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_24"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

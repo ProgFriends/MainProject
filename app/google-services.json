@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981668132891",
+    "project_id": "frogfriendsmainproject",
+    "storage_bucket": "frogfriendsmainproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981668132891:android:8188669f52d786ee2920be",
+        "android_client_info": {
+          "package_name": "com.prog.mainproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOiiban5trir678cNxrIu6fF3YokbPhSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

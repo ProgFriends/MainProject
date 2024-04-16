@@ -28,7 +28,7 @@ class CalenderActivity : AppCompatActivity() {
                 R.id.page_home -> {
                     // 홈 아이템 클릭 시 홈 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderActivity, FirstHome::class.java))
+                    startActivity(Intent(this@CalenderActivity, HomeActivity::class.java))
                     true
                 }
                 R.id.page_fv -> {

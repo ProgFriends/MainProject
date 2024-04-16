@@ -39,15 +39,14 @@ class CalenderAddActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.page_home -> {
-                    startActivity(Intent(this@CalenderAddActivity, FirstHome::class.java))
+                    startActivity(Intent(this@CalenderAddActivity, HomeActivity::class.java))
                     true
                 }
 
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     startActivity(Intent(this@CalenderAddActivity, CalenderActivity::class.java))
-                    true
-                }
+                    true                }
 
                 else -> false
             }
