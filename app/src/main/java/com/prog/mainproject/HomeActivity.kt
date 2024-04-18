@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.RCV_PlantList)
         val btn_AddPlant = findViewById<ImageButton>(R.id.Btn_AddPlant)
         val img_YourPlant = findViewById<ImageView>(R.id.image_YourpPant)
+
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
 
@@ -88,14 +89,17 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.page_fv -> {
                         // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
-                        finish()
                         startActivity(Intent(this@HomeActivity, PestActivity::class.java))
                         true
                     }
                     R.id.page_ps -> {
                         // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
-                        finish()
                         startActivity(Intent(this@HomeActivity, CalenderActivity::class.java))
+                        true
+                    }
+                    R.id.page_show -> {
+                        // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                        startActivity(Intent(this@HomeActivity, WebCamActivity::class.java))
                         true
                     }
                     else -> false

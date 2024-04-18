@@ -1,18 +1,24 @@
 package com.prog.mainproject
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.CalendarView
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.prog.mainproject.databinding.ActivityWebCamBinding
 
-class CalenderActivity : AppCompatActivity() {
+class WebCamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.calender_home)
+        setContentView(R.layout.activity_web_cam)
+
+        val webview = findViewById<WebView>(R.id.WebView)
+        webview.webViewClient = WebViewClient()
+        webview.loadUrl("https://www.naver.com")      // 일단 네이버로 해둘게요
+
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
@@ -28,13 +34,13 @@ class CalenderActivity : AppCompatActivity() {
                 R.id.page_home -> {
                     // 홈 아이템 클릭 시 홈 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@WebCamActivity, HomeActivity::class.java))
                     true
                 }
                 R.id.page_fv -> {
                     // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderActivity, PestActivity::class.java))
+                    startActivity(Intent(this@WebCamActivity, PestActivity::class.java))
                     true
                 }
                 R.id.page_ps -> {
@@ -45,24 +51,11 @@ class CalenderActivity : AppCompatActivity() {
                 R.id.page_show -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderActivity, WebCamActivity::class.java))
+                    startActivity(Intent(this@WebCamActivity, WebCamActivity::class.java))
                     true
                 }
                 else -> false
             }
-        }
-
-
-        val calendarView = findViewById<CalendarView>(R.id.calendarView)
-
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-
-            val selectedDate = "$year-${month + 1}-$dayOfMonth"
-            Toast.makeText(this, "Selected Date: $selectedDate", Toast.LENGTH_SHORT).show()
-
-            val intent = Intent(this, CalenderDetailActivity::class.java)
-            intent.putExtra("selectedDate", selectedDate)
-            startActivity(intent)
         }
     }
 }

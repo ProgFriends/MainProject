@@ -48,7 +48,6 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         setContentView(R.layout.register_information)
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
-
         backIcon.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 finish() // 현재 액티비티 종료
