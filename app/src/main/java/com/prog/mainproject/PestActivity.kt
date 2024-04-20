@@ -32,11 +32,8 @@ class PestActivity : AppCompatActivity() {
     private val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST = 102
 
     private val originalModelPath = "all.tflite"
-    private val newModelPath = "2.tflite"
     private lateinit var originalTfLite: Interpreter
-    private lateinit var newTfLite: Interpreter
-    private val originalClassLabels = arrayOf("Earlyblight", "Lateblight", "LeafSpot", "Mite", "SootyMold", "aphids", "healthy", "powdery")
-    private val newClassLabels = arrayOf("LeafSpot", "Earlyblight", "Lateblight")
+    private val originalClassLabels = arrayOf("Earlyblight", "LeafSpot", "Mite", "SootyMold", "aphids", "healthy", "powdery")
 
     private val imageCaptureLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         handleImageCaptureResult(result.resultCode, result.data)
@@ -51,13 +48,13 @@ class PestActivity : AppCompatActivity() {
         setContentView(R.layout.pest_home)
 
         originalTfLite = getTfliteInterpreter(originalModelPath)
-        newTfLite = getTfliteInterpreter(newModelPath)
-        Log.d("PestActivity", "New Model Interpreter: $newTfLite")
+        Log.d("PestActivity", "New Model Interpreter: $originalTfLite")
 
         btnCapture = findViewById(R.id.btnTakePicture)
         btnUpload = findViewById(R.id.buttonGallery)
 
         btnCapture.setOnClickListener {
+            // 카메라 권한 확인 및 요청
             if (checkCameraPermission()) {
                 val cInt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 imageCaptureLauncher.launch(cInt)
@@ -122,8 +119,8 @@ class PestActivity : AppCompatActivity() {
             // 이미지 캡처 성공 처리
             val bp = data?.extras?.get("data") as Bitmap
             val rotatedBitmap = rotateBitmap(bp, 90f)
-            val cx = 150
-            val cy = 150
+            val cx = 200
+            val cy = 200
             val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, cx, cy, false)
             val pixels = IntArray(cx * cy)
             resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
@@ -133,19 +130,9 @@ class PestActivity : AppCompatActivity() {
             originalTfLite.run(inputImg, originalPred)
 
             val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
+            Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-            // If the predicted label is one of the first three labels,
-            // use the new model for re-prediction
-            if (originalPredictedLabel in arrayOf("Earlyblight", "Lateblight", "LeafSpot")) {
-                val newPred = Array(1) { FloatArray(3) } // LeafSpot, Earlyblight, Lateblight
-                newTfLite.run(inputImg, newPred)
-                val newPredictedLabel = getPredictedClassLabel(newPred[0])
-                Log.d("PestActivity", "New Model Prediction: $newPredictedLabel")
-                startDiagnosisActivity(newPredictedLabel)
-            } else {
-                Log.d("PestActivity", "Original Model Prediction: $originalPredictedLabel")
-                startDiagnosisActivity(originalPredictedLabel)
-            }
+            startDiagnosisActivity(originalPredictedLabel)
         }
     }
 
@@ -210,8 +197,8 @@ class PestActivity : AppCompatActivity() {
         // 예를 들어, 위의 handleImageCaptureResult 메서드와 유사한 코드를 사용할 수 있음
         // 이 코드는 선택한 이미지에 대해 진단을 수행하고 결과를 출력하는 부분을 나타냅니다.
         val rotatedBitmap = rotateBitmap(selectedBitmap, 90f)
-        val cx = 150
-        val cy = 150
+        val cx = 200
+        val cy = 200
         val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, cx, cy, false)
         val pixels = IntArray(cx * cy)
         resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
@@ -221,19 +208,9 @@ class PestActivity : AppCompatActivity() {
         originalTfLite.run(inputImg, originalPred)
 
         val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
+        Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-        // If the predicted label is one of the first three labels,
-        // use the new model for re-prediction
-        if (originalPredictedLabel in arrayOf("Earlyblight", "Lateblight", "LeafSpot")) {
-            val newPred = Array(1) { FloatArray(3) } // LeafSpot, Earlyblight, Lateblight
-            newTfLite.run(inputImg, newPred)
-            val newPredictedLabel = getPredictedClassLabel(newPred[0])
-            Log.d("PestActivity", "New Model Prediction: $newPredictedLabel")
-            startDiagnosisActivity(newPredictedLabel)
-        } else {
-            Log.d("PestActivity", "Original Model Prediction: $originalPredictedLabel")
-            startDiagnosisActivity(originalPredictedLabel)
-        }
+        startDiagnosisActivity(originalPredictedLabel)
     }
 
     private fun rotateBitmap(source: Bitmap, angle: Float): Bitmap {
@@ -269,13 +246,7 @@ class PestActivity : AppCompatActivity() {
     private fun getPredictedClassLabel(predictions: FloatArray): String {
         val maxIndex = predictions.indices.maxByOrNull { predictions[it] } ?: -1
         return if (maxIndex != -1) {
-            if (maxIndex < 3) {
-                // Use the labels of the new model
-                newClassLabels[maxIndex]
-            } else {
-                // Use the labels of the original model
-                originalClassLabels[maxIndex]
-            }
+            originalClassLabels[maxIndex]
         } else {
             "Unknown"
         }
@@ -312,10 +283,6 @@ class PestActivity : AppCompatActivity() {
             }
             "earlyblight" -> {
                 val intent = Intent(this, PestEarlyblight::class.java)
-                startActivity(intent)
-            }
-            "lateblight" -> {
-                val intent = Intent(this, PestLateblight::class.java)
                 startActivity(intent)
             }
             // 다른 클래스 레이블에 대한 처리 추가
