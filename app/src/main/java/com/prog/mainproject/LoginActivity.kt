@@ -34,12 +34,12 @@ class LoginActivity : AppCompatActivity() {
         var userToken: String = ""
 
         lateinit var queue: RequestQueue
-            private set
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         setTitle("로그인")
 
         FirebaseApp.initializeApp(this)

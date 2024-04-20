@@ -29,6 +29,11 @@ import java.util.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.android.volley.NetworkResponse
+import com.android.volley.Request
+import com.android.volley.toolbox.HttpHeaderParser
+import java.nio.charset.Charset
+import java.text.SimpleDateFormat
 
 class RegisterInformationActivityActivity : AppCompatActivity() {
 
@@ -41,7 +46,6 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
     private var plantName: String = ""
     private var bringDate: String = ""
     private var plantImageBytes: ByteArray = byteArrayOf()
-    private var plantImageBytesString : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,8 +99,6 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
 
         // 등록하기 버튼을 눌렀을 때
         btn_regiplant.setOnClickListener{
-            val drawable = ContextCompat.getDrawable(this, R.drawable.plant)
-
             if (imageUri == null) {
                 Toast.makeText(applicationContext, "식물 사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
@@ -109,73 +111,118 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
             else {
                 plantName = edit_plantname.text.toString().trim()               // 식물 이름 읽어오기
                 plantImageBytes = imageUri?.let { getByteArrayFromUri(this, it) } ?: byteArrayOf()       // 이미지를 byteArray로 읽어오기
-                Log.d("plantImageBytes:  ",  plantImageBytes.contentToString())
-                Log.d("plantimage", imageUri.toString())
 
-                //val bitmap: Bitmap = byteArrayToBitmap(plantImageBytes)
-                //plantImageBytesString = bitmapToString(bitmap)
-                //Log.d("plantImageBytes:  ",  plantImageBytesString)
+                bringDate = tv_bringDate.text.toString().trim()
+                val bringDateObj = stringToDate(bringDate, "yyyy-MM-dd")// 식물 데려온 날짜 읽어오기
 
-                /*  // 안드로이드 스튜디오 내의 Drawable 파일은 가져올 수 있나 테스트
-                if (drawable != null) {
-                    // Drawable 이미지를 byte 배열로 변환
-                    val plantImageBytes = getByteArrayFromDrawable(drawable)
-                    // 이미지를 Base64 문자열로 변환
-                    plantImageBytesString = Base64.encodeToString(plantImageBytes, Base64.DEFAULT)
-                    Log.d("plantImageBytes 1:  ",  plantImageBytesString)
-                }
-                 */
+                val PlantRegiRequest = MultipartRequest(
+                    url = "http://15.165.56.246/android_plantInput_mysql.php",
+                    plantName = plantName,
+                    byteArray = plantImageBytes,
+                    params = mapOf(
+                        "UID" to LoginActivity.UID,
+                        "plantSpecies" to plantSpecies!!,
+                        "plantName" to plantName,
+                        "BringDate" to bringDate
+                    ),
+                    listener = { response ->
+                        try {
+                            val jsonString = String(response.data, Charset.defaultCharset()) // 바이트 배열을 문자열로 변환
+                            val jsonObject = JSONObject(jsonString) // 문자열을 JSONObject로 파싱
+                            Log.d("식물 등록: Json객체", jsonObject.toString())
 
-                bringDate = tv_bringDate.toString().trim()                      // 식물 데려온 날짜 읽어오기
+                            val success = jsonObject.getBoolean("success")
+                            val message = jsonObject.getString("message")
+                            Log.d("response message", message)
 
-                val responseListener = Response.Listener<String> { response ->
-                    try {
-                        val jsonObject = JSONObject(response)
-                        Log.d("식물 등록: Json객체", jsonObject.toString())
-
-                        val success = jsonObject.getBoolean("success")
-                        val message = jsonObject.getString("message")
-
-                        if (success) {
-                            Toast.makeText(applicationContext, "식물을 성공적으로 등록했습니다.", Toast.LENGTH_SHORT).show()
+                            if (success) {
+                                Toast.makeText(applicationContext, "식물을 성공적으로 등록했습니다.", Toast.LENGTH_SHORT).show()
+                            }
+                            else {
+                                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
                         }
-                        else {
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                            return@Listener
-                        }
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
+                    },
+                    errorListener = { error ->
+                        Log.e("식물 등록","$error")
                     }
-                }
-
-                val plnatRegiRequest = PlnatRegiRequest(LoginActivity.UID, plantSpecies!!, plantName, plantImageBytes, bringDate, responseListener)
-                val queue: RequestQueue = LoginActivity.queue
-                queue.add(plnatRegiRequest)
-
-
-
+                )
+                LoginActivity.queue.add(PlantRegiRequest)
+                HomeActivity.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
+                HomeActivity.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
+                finish()
             }
         }
     }
 
-    inner class PlnatRegiRequest(UID: String, plantSpecies: String, plantName: String, PlantImage: ByteArray, BringDate: String, listener: Response.Listener<String>) :
-        StringRequest(Method.POST, "http://15.165.56.246/android_plantInput_mysql.php", listener, null) {
 
-        private val map: MutableMap<String, String> = HashMap()
+    // new code
+    inner class MultipartRequest(
+        url: String,
+        private val plantName: String,
+        private val byteArray: ByteArray,
+        private val params: Map<String, String>,
+        private val listener: Response.Listener<NetworkResponse>, // listener를 클래스의 프로퍼티로 만듭니다.
+        errorListener: Response.ErrorListener
+    ) : Request<NetworkResponse>(Method.POST, url, errorListener) {
+
+        private val mimeType = "multipart/form-data"
+        private val boundary = "apiclient-" + System.currentTimeMillis()
+        private val header = HashMap<String, String>()
 
         init {
-            map["UID"] = UID
-            map["plantSpecies"] = plantSpecies
-            map["plantName"] = plantName
-            // map["plantImage"] = Base64.encodeToString(PlantImage, Base64.DEFAULT)
-            map["plantImage"] = PlantImage.toString()
-            map["BringDate"] = BringDate
-
-            Log.d("plantImageEn:  ",  Base64.encodeToString(PlantImage, Base64.DEFAULT))
+            header["Content-Type"] = "$mimeType;boundary=$boundary"
         }
 
         override fun getParams(): Map<String, String> {
-            return map
+            return params
+        }
+
+        override fun getHeaders(): Map<String, String> {
+            return header
+        }
+
+        override fun getBodyContentType(): String {
+            return "$mimeType;boundary=$boundary"
+        }
+
+        override fun getBody(): ByteArray {
+            val outputStream = ByteArrayOutputStream()
+            val writer = PrintWriter(outputStream)
+
+            // Add parameters
+            for ((key, value) in params) {
+                writer.append("--$boundary\r\n")
+                writer.append("Content-Disposition: form-data; name=\"$key\"\r\n")
+                writer.append("\r\n$value\r\n")
+            }
+
+            // Add image
+            writer.append("--$boundary\r\n")
+            writer.append("Content-Disposition: form-data; name=\"plantImage\"; filename=\"${plantName}.jpg\"\r\n")
+            writer.append("Content-Type: image/jpeg\r\n")
+            writer.append("Content-Transfer-Encoding: binary\r\n")
+            writer.append("\r\n")
+            writer.flush()
+
+            outputStream.write(byteArray)
+            outputStream.flush()
+
+            writer.append("\r\n")
+            writer.append("--$boundary--\r\n")
+            writer.close()
+
+            return outputStream.toByteArray()
+        }
+
+        override fun parseNetworkResponse(response: NetworkResponse): Response<NetworkResponse> {
+            return Response.success(response, HttpHeaderParser.parseCacheHeaders(response))
+        }
+
+        override fun deliverResponse(response: NetworkResponse) {
+            listener.onResponse(response) // 이제 listener를 참조할 수 있습니다.
         }
     }
 
@@ -199,51 +246,11 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         pickImageLauncher.launch(gallery)
     }
 
-
-
-
-
-
-
-    // 여기서부터 이미지를 바이트어레이로 변환할 때 테스트하며 사용한 함수들이에여...
-
-    // 이미지 파일을 바이트 배열로 읽어오는 함수
-    private fun getImageBytes(uri: Uri): ByteArray {
-        val inputStream = contentResolver.openInputStream(uri)
-        return inputStream?.use { it.readBytes() } ?: ByteArray(0)
+    // 문자열을 Date 객체로 변환하는 함수
+    private fun stringToDate(dateString: String, format: String): Date {
+        val formatter = SimpleDateFormat(format)
+        return formatter.parse(dateString) ?: Date()
     }
-
-
-    // 비트맵 파일을 받아서 바이트 어레이로 변환
-    fun bitmapToString(bitmap: Bitmap): String {
-        val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, baos)
-        val arr = baos.toByteArray()                            // ByteArrayOutputStream 객체인 baos를 생성 -> 비트맵 압축 -> 배열화
-        val image = Base64.encodeToString(arr, Base64.DEFAULT)
-        var temp = ""
-        try {
-            temp = "&imagedevice=" + URLEncoder.encode(image, "utf-8")
-        } catch (e: Exception) {
-            Log.e("exception", e.toString())
-        }
-        return temp
-    }
-
-
-    // 바이트 어레이를 비트맵으로 변환
-    fun byteArrayToBitmap(byteArray: ByteArray): Bitmap {
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-    }
-
-
-    // Drawable 파일을 바이트어레이로 변환
-    fun getByteArrayFromDrawable(d: Drawable): ByteArray {
-        val bitmap = (d as BitmapDrawable).bitmap
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, stream)
-        return stream.toByteArray()
-    }
-
 
     // Uri 객체를 바이트어레이로 변환
     fun getByteArrayFromUri(context: Context, uri: Uri): ByteArray? {
@@ -260,43 +267,5 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         } else {
             null
         }
-    }
-
-
-    // 이미지 주소를 절대경로로 바꿔주는 메소드
-    fun getRealPathFromUri(context: Context, uri: Uri): String? {
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val loader = CursorLoader(context, uri, projection, null, null, null)
-        val cursor: Cursor? = loader.loadInBackground()
-        cursor?.use {
-            val column_index = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            it.moveToFirst()
-            return it.getString(column_index)
-        }
-        return null
-    }
-
-
-    fun createCopyAndReturnRealPath(context: Context, uri: Uri): String? {
-        val contentResolver: ContentResolver = context.getContentResolver() ?: return null
-
-        // 파일 경로를 만듬
-        val filePath: String = (context.getApplicationInfo().dataDir + File.separator
-                + System.currentTimeMillis())
-        val file = File(filePath)
-        try {
-            // 매개변수로 받은 uri 를 통해  이미지에 필요한 데이터를 불러 들인다.
-            val inputStream = contentResolver.openInputStream(uri) ?: return null
-            // 이미지 데이터를 다시 내보내면서 file 객체에  만들었던 경로를 이용한다.
-            val outputStream: OutputStream = FileOutputStream(file)
-            val buf = ByteArray(1024)
-            var len: Int
-            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-            outputStream.close()
-            inputStream.close()
-        } catch (ignore: IOException) {
-            return null
-        }
-        return file.getAbsolutePath()
     }
 }

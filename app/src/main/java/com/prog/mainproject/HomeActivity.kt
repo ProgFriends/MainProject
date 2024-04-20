@@ -22,7 +22,9 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var adapter : PlantListAdapter
+    companion object {
+        lateinit var adapter: PlantListAdapter
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
