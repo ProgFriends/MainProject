@@ -17,7 +17,7 @@ class WebCamActivity : AppCompatActivity() {
 
         val webview = findViewById<WebView>(R.id.WebView)
         webview.webViewClient = WebViewClient()
-        webview.loadUrl("https://www.naver.com")      // 일단 네이버로 해둘게요
+        webview.loadUrl("http://172.20.3.46:5000")      // 일단 네이버로 해둘게요
 
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
