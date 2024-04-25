@@ -103,7 +103,8 @@ class PestActivity : AppCompatActivity() {
                     true
                 }
                 R.id.page_show -> {
-                    // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                    // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
+                    finish()
                     startActivity(Intent(this@PestActivity, WebCamActivity::class.java))
                     true
                 }

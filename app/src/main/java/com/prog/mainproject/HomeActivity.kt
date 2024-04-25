@@ -100,7 +100,7 @@ class HomeActivity : AppCompatActivity() {
                         true
                     }
                     R.id.page_show -> {
-                        // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                        // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
                         startActivity(Intent(this@HomeActivity, WebCamActivity::class.java))
                         true
                     }
