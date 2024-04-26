@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
@@ -15,10 +16,18 @@ class WebCamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_cam)
 
+        /*
         val webview = findViewById<WebView>(R.id.WebView)
         webview.webViewClient = WebViewClient()
         webview.loadUrl("http://172.20.3.46:5000")      // 일단 네이버로 해둘게요
-
+*/
+        val myWebView: WebView = findViewById(R.id.WebView)
+        val webSettings: WebSettings = myWebView.settings
+        webSettings.javaScriptEnabled = true
+        webSettings.useWideViewPort = true
+        webSettings.loadWithOverviewMode = true
+        myWebView.webViewClient = WebViewClient()
+        myWebView.loadUrl("http://172.20.3.46:5000")
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
