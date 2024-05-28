@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/page_home" android:enabled="true" android:icon="@drawable/ic_baseline_home_24" android:title="홈"/>
-    <item android:id="@+id/page_fv" android:enabled="true" android:icon="@drawable/ic_action_name" android:title="질병진단"/>
-    <item android:id="@+id/page_ps" android:enabled="true" android:icon="@drawable/ic_baseline_calendar_today_24" android:title="식물기록"/>
-    <item android:id="@+id/page_show" android:enabled="true" android:icon="@drawable/ic_baseline_camera_indoor_24" android:title="식물보기"/>
+    <item android:id="@+id/page_home" android:icon="@drawable/ic_baseline_home_24" android:title="홈"/>
+    <item android:id="@+id/page_fv" android:icon="@drawable/ic_action_name" android:title="질병진단"/>
+    <item android:id="@+id/page_ps" android:icon="@drawable/ic_baseline_calendar_today_24" android:title="식물기록"/>
+    <item android:id="@+id/page_show" android:icon="@drawable/ic_baseline_camera_indoor_24" android:title="식물보기"/>
 </menu>

@@ -88,7 +88,7 @@ class PestActivity : AppCompatActivity() {
                 R.id.page_home -> {
                     // 홈 아이템 클릭 시 홈 화면으로 이동
                     finish()
-                    startActivity(Intent(this@PestActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@PestActivity, HomeFragment::class.java))
                     true
                 }
                 R.id.page_fv -> {

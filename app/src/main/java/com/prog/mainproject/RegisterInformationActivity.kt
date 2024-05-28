@@ -150,8 +150,8 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                     }
                 )
                 LoginActivity.queue.add(PlantRegiRequest)
-                HomeActivity.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
-                HomeActivity.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
+                HomeFragment.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
+                HomeFragment.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
                 finish()
             }
         }

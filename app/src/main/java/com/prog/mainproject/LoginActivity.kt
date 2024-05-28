@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                                         Log.e("FCM Token", "Failed to get token")
                                     }
                                 }
-                                val intent = Intent(applicationContext, HomeActivity::class.java)
+                                val intent = Intent(applicationContext, NaviActivity::class.java)
                                 startActivity(intent)
                             }
                             else {
