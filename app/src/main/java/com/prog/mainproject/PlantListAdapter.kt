@@ -103,6 +103,7 @@ class PlantListAdapter: RecyclerView.Adapter<PlantListAdapter.ViewHolder>() {
         }
     }
 
+
     inner class DeletePlnatRequest(PlantSpecies: String, listener: Response.Listener<String>) :
         StringRequest(Method.POST, "http://15.165.56.246/android_plantDelete_mysql.php", listener, null) {
 

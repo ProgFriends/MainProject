@@ -115,6 +115,12 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                 bringDate = tv_bringDate.text.toString().trim()
                 val bringDateObj = stringToDate(bringDate, "yyyy-MM-dd")// 식물 데려온 날짜 읽어오기
 
+                // 식물 종의 중복 여부를 확인
+                if (isPlantSpeciesDuplicate(plantSpecies!!)) {
+                    Toast.makeText(applicationContext, "이미 등록한 식물종입니다. 다른 종을 선택해주세요!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 val PlantRegiRequest = MultipartRequest(
                     url = "http://15.165.56.246/android_plantInput_mysql.php",
                     plantName = plantName,
@@ -137,6 +143,9 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
 
                             if (success) {
                                 Toast.makeText(applicationContext, "식물을 성공적으로 등록했습니다.", Toast.LENGTH_SHORT).show()
+                                HomeFragment.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
+                                HomeFragment.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
+                                finish()
                             }
                             else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
@@ -150,11 +159,18 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                     }
                 )
                 LoginActivity.queue.add(PlantRegiRequest)
-                HomeFragment.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
-                HomeFragment.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
-                finish()
             }
         }
+    }
+
+    // 새로운 함수 추가
+    private fun isPlantSpeciesDuplicate(plantSpecies: String): Boolean {
+        for (plant in HomeFragment.adapter.plantList) {
+            if (plant.PlantSpecies == plantSpecies) {
+                return true
+            }
+        }
+        return false
     }
 
 
