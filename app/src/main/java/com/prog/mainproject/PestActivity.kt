@@ -99,7 +99,7 @@ class PestActivity : AppCompatActivity() {
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     finish()
-                    startActivity(Intent(this@PestActivity, CalenderActivity::class.java))
+                    startActivity(Intent(this@PestActivity, CalendarActivity::class.java))
                     true
                 }
                 R.id.page_show -> {

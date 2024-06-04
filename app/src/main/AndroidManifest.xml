@@ -157,7 +157,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CalenderActivity"
+            android:name=".CalendarActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
