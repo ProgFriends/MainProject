@@ -96,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.page_ps -> {
                         // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
-                        startActivity(Intent(this@HomeActivity, CalenderActivity::class.java))
+                        startActivity(Intent(this@HomeActivity, CalendarActivity::class.java))
                         true
                     }
                     R.id.page_show -> {

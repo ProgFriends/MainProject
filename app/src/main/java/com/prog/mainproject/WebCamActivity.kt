@@ -9,7 +9,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.prog.mainproject.databinding.ActivityWebCamBinding
 
 class WebCamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +18,7 @@ class WebCamActivity : AppCompatActivity() {
         /*
         val webview = findViewById<WebView>(R.id.WebView)
         webview.webViewClient = WebViewClient()
-        webview.loadUrl("http://172.20.3.46:5000")      // 일단 네이버로 해둘게요
+        webview.loadUrl("http://172.20.3.46:5000")
 */
         val myWebView: WebView = findViewById(R.id.WebView)
         val webSettings: WebSettings = myWebView.settings
@@ -55,7 +54,7 @@ class WebCamActivity : AppCompatActivity() {
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     finish()
-                    startActivity(Intent(this@WebCamActivity, CalenderActivity::class.java))
+                    startActivity(Intent(this@WebCamActivity, CalendarActivity::class.java))
                     true
                 }
                 R.id.page_show -> {
