@@ -55,12 +55,12 @@ tools:context=".PestLateblight">
         <!-- 이미지 블록 추가 -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="650dp">
+            android:layout_height="900dp">
 
             <!-- 진단서 이미지 블록 -->
             <ImageView
                 android:layout_width="370dp"
-                android:layout_height="650dp"
+                android:layout_height="900dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/green_round" />
 
@@ -237,6 +237,77 @@ tools:context=".PestLateblight">
                 android:text="토양이 장기간 과하게 습하지 않도록 물 빠짐에 신경 써주세요. \n베지크린 입상수화제를 발병 초 7일 간격 물 1L당 0. 4g 희석해서 수확 3일 전까지 3회 이내로 사용해 주세요."
                 android:textColor="@color/black"
                 android:textSize="20dp" />
+
+            <!-- 추천 제품 이미지 블록 -->
+            <ImageView
+                android:layout_width="345dp"
+                android:layout_height="240dp"
+                android:layout_gravity="top"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="645dp"
+                android:background="@drawable/light_green_round"
+                android:scaleType="centerCrop" />
+
+            <!-- 추천 제품 텍스트 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="650dp"
+                android:text="추천 제품"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="345dp"
+                android:layout_height="2dp"
+                android:layout_gravity="top"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="683dp"
+                android:background="@drawable/black_back"
+                android:scaleType="centerCrop" />
+
+            <!--추천 제품1-->
+            <ImageView
+                android:id="@+id/recommend1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="700dp"
+                android:background="@drawable/pest_zandizero"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="853dp"
+                android:text="잔디 제로"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                />
+
+            <!--추천 제품2-->
+            <ImageView
+                android:id="@+id/recommend2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="195dp"
+                android:layout_marginTop="700dp"
+                android:background="@drawable/pest_modussack"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="853dp"
+                android:text="모두 싹"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                />
 
         </FrameLayout>
     </LinearLayout>
