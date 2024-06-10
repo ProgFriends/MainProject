@@ -53,12 +53,12 @@
             <!-- 이미지 블록 추가 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="700dp">
+                android:layout_height="950dp">
 
                 <!-- 진단서 이미지 블록 -->
                 <ImageView
                     android:layout_width="370dp"
-                    android:layout_height="700dp"
+                    android:layout_height="950dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/green_round" />
 
@@ -218,7 +218,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="340dp"
+                    android:layout_width="345dp"
                     android:layout_height="2dp"
                     android:layout_gravity="top"
                     android:layout_marginStart="15dp"
@@ -234,6 +234,80 @@
                     android:text="벌레를 모두 제거하고 통풍이 잘 되게 해주세요. \n벌레가 조금 있는 경우, 알코올로 가볍게 닦아내거나 물로 씻겨주세요. \n벌레가 많은 경우 친환경 해충약으로 박멸해주세요."
                     android:textColor="@color/black"
                     android:textSize="20dp" />
+
+
+                <!-- 추천 제품 이미지 블록 -->
+                <ImageView
+                    android:layout_width="345dp"
+                    android:layout_height="240dp"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="690dp"
+                    android:background="@drawable/light_green_round"
+                    android:scaleType="centerCrop" />
+
+                <!-- 추천 제품 텍스트 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="695dp"
+                    android:text="추천 제품"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="345dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="728dp"
+                    android:background="@drawable/black_back"
+                    android:scaleType="centerCrop" />
+
+                <!--추천 제품1-->
+                <ImageView
+                    android:id="@+id/recommend1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="745dp"
+                    android:background="@drawable/pest_zandizero"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="72dp"
+                    android:layout_marginTop="898dp"
+                    android:text="진디제로"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                     />
+
+                <!--추천 제품2-->
+                <ImageView
+                    android:id="@+id/recommend2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="195dp"
+                    android:layout_marginTop="745dp"
+                    android:background="@drawable/pest_modussack"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="240dp"
+                    android:layout_marginTop="898dp"
+                    android:text="모두 싹"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    />
+
+
             </FrameLayout>
         </LinearLayout>
     </ScrollView>
