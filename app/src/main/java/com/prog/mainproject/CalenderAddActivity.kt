@@ -33,8 +33,10 @@ class CalenderAddActivity : AppCompatActivity() {
 
     private lateinit var ImgV_calendarImage: ImageView
     private lateinit var spinner_nicknameSpecies : Spinner
+    private var IsPest: String = ""
     private var imageUri: Uri? = null
     private var imageBitmap: Bitmap? = null
+    private var byteArray: ByteArray? = null
 
     private var plantSpecies: String? = ""
     private var plantName: String = ""
@@ -49,7 +51,13 @@ class CalenderAddActivity : AppCompatActivity() {
         setContentView(R.layout.calender_add)
 
         // 날짜 세팅
-        recordDate = intent.getStringExtra("selectedDate").toString()
+        if(intent.getStringExtra("currentDate") != null) {
+            recordDate = intent.getStringExtra("currentDate").toString()
+        }
+        else {
+            recordDate = intent.getStringExtra("selectedDate").toString()
+        }
+
         val tv_selectedDate = findViewById<TextView>(R.id.TV_selectedDate)
         tv_selectedDate.text = recordDate
 
@@ -59,10 +67,18 @@ class CalenderAddActivity : AppCompatActivity() {
         var btn_regicalendar = findViewById<Button>(R.id.Btn_RegiCalendar)
 
 
+        // 인텐트로 받아온 이미지 있으면 세팅
+        byteArray = intent.getByteArrayExtra("byteArrayExtra")
+        if (byteArray != null){
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray!!.size)
+            ImgV_calendarImage.setImageBitmap(bitmap)
+        }
+
         // 이미지 뷰 클릭 시, 갤러리에서 사진을 선택하고 이미지 뷰를 해당 사진으로 대체
         ImgV_calendarImage.setOnClickListener{
             openGallery()
         }
+
 
         // 식물 종 입력 (spinner 어댑터)
         var plantNameList = HomeActivity.adapter.plantList.map { it.PlantName }
@@ -132,7 +148,6 @@ class CalenderAddActivity : AppCompatActivity() {
                 finish()
             }
         }
-
 
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
@@ -216,7 +231,6 @@ class CalenderAddActivity : AppCompatActivity() {
                 val data: Intent? = result.data
                 data?.data?.let {
                     imageUri = it
-                    imageBitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(it))   // 이미지를 비트맵으로 변환하여 변수에 저장
                     ImgV_calendarImage.setImageURI(imageUri)
                 }
             }
@@ -244,4 +258,13 @@ class CalenderAddActivity : AppCompatActivity() {
             null
         }
     }
+
+    /*
+    fun getImageUri(context: Context, inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path: String? = MediaStore.Images.Media.insertImage(context.contentResolver, inImage, "Title", null)
+        return Uri.parse(path)
+    }
+     */
 }

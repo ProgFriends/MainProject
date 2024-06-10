@@ -2,13 +2,16 @@ package com.prog.mainproject
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.AssetFileDescriptor
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.media.ThumbnailUtils
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -18,9 +21,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tensorflow.lite.Interpreter
-import java.io.FileInputStream
+import java.io.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.channels.FileChannel
@@ -30,6 +34,7 @@ class PestActivity : AppCompatActivity() {
     private lateinit var btnUpload: Button
     private val CAMERA_PERMISSION_REQUEST = 101
     private val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST = 102
+    private var byteArray: ByteArray? = null
 
     private val originalModelPath = "all.tflite"
     private lateinit var originalTfLite: Interpreter
@@ -133,6 +138,8 @@ class PestActivity : AppCompatActivity() {
             val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
             Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
+            byteArray = bitmapToByteArray(bp)
+
             startDiagnosisActivity(originalPredictedLabel)
         }
     }
@@ -211,6 +218,8 @@ class PestActivity : AppCompatActivity() {
         val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
         Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
+        byteArray = bitmapToByteArray(selectedBitmap)
+
         startDiagnosisActivity(originalPredictedLabel)
     }
 
@@ -260,31 +269,37 @@ class PestActivity : AppCompatActivity() {
         when (predictedLabel.toLowerCase()) {
             "leafspot" -> {
                 val intent = Intent(this, PestLeafSpotActivity::class.java)
-
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "sootymold" -> {
                 val intent = Intent(this, PestSootyMold::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "mite" -> {
                 val intent = Intent(this, PestMite::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "aphids" -> {
                 val intent = Intent(this, PestAphids::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "healthy" -> {
                 val intent = Intent(this, PestHealthy::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "powdery" -> {
                 val intent = Intent(this, PestConfusePowderyMealy::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "earlyblight" -> {
                 val intent = Intent(this, PestEarlyblight::class.java)
+                intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             // 다른 클래스 레이블에 대한 처리 추가
@@ -294,5 +309,38 @@ class PestActivity : AppCompatActivity() {
                 // 예측된 클래스 레이블에 대한 특별한 처리가 없을 경우에 대한 로직 추가
             }
         }
+    }
+
+    fun getImageUri(context: Context, inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path: String? = MediaStore.Images.Media.insertImage(context.contentResolver, inImage, "Title", null)
+        return Uri.parse(path)
+    }
+
+
+    private fun saveImageToExternalStorage(bitmap: Bitmap): Uri? {
+        val imagesDir = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "{ProgFriends}")
+        imagesDir.mkdirs()
+        val timestamp = System.currentTimeMillis()
+        val imageFileName = "IMG_${timestamp}.jpg"
+        val imageFile = File(imagesDir, imageFileName)
+
+        return try {
+            val outputStream = FileOutputStream(imageFile)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            outputStream.flush()
+            outputStream.close()
+            FileProvider.getUriForFile(this, "${packageName}.provider", imageFile)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
     }
 }
