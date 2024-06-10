@@ -24,6 +24,13 @@ class HomeActivity : AppCompatActivity() {
 
     companion object {
         lateinit var adapter: PlantListAdapter
+
+        fun getPlantSpeciesByPlantName(plantName: String): String? {
+            // plantName과 일치하는 PlantListClass 객체를 찾음
+            val plantInfo = adapter.plantList.find { it.PlantName == plantName }
+            // 찾은 객체가 있으면 해당 객체의 PlantSpecies를 반환, 없으면 null 반환
+            return plantInfo?.PlantSpecies
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

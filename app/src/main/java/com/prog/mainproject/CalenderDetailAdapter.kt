@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
@@ -52,7 +53,6 @@ class CalenderDetailAdapter: RecyclerView.Adapter<CalenderDetailAdapter.ViewHold
 
         init {
             btn_delete.setOnClickListener {
-                /*
                 val position = adapterPosition
 
                 if (position != RecyclerView.NO_POSITION) {
@@ -61,7 +61,7 @@ class CalenderDetailAdapter: RecyclerView.Adapter<CalenderDetailAdapter.ViewHold
                     val responseListener = Response.Listener<String> { response ->
                         try {
                             val jsonObject = JSONObject(response)
-                            Log.d("식물 삭제 중: Json객체", jsonObject.toString())
+                            Log.d("달력 삭제 중: Json객체", jsonObject.toString())
 
                             val success = jsonObject.getBoolean("success")
                             val message = jsonObject.getString("message")
@@ -82,11 +82,10 @@ class CalenderDetailAdapter: RecyclerView.Adapter<CalenderDetailAdapter.ViewHold
                         }
                     }
 
-                    val deleteplnatRequest = DeletePlnatRequest(item.PlantSpecies, responseListener)
+                    val deleteplnatRequest = DeleteCalendarRequest(item.plantSpecies, item.plantName, item.recordDate, item.pestInfo, item.memo, responseListener)
                     val queue: RequestQueue = LoginActivity.queue
                     queue.add(deleteplnatRequest)
                 }
-                */
             }
         }
 
@@ -97,6 +96,26 @@ class CalenderDetailAdapter: RecyclerView.Adapter<CalenderDetailAdapter.ViewHold
 
             val bitmap = BitmapFactory.decodeByteArray(item.PlantImage, 0, item.PlantImage.size)
             ImgV_plant.setImageBitmap(bitmap)
+        }
+    }
+
+    inner class DeleteCalendarRequest(PlantSpecies: String, plantName: String, recordDate: String, pestInfo: String, memo: String,listener: Response.Listener<String>) :
+        StringRequest(Method.POST, "http://15.165.56.246/android_calendarDelete_mysql.php", listener, null) {
+
+        private val map: MutableMap<String, String> = HashMap()
+
+        init {
+            map["UID"] = LoginActivity.UID
+            map["plantSpecies"] = PlantSpecies
+            map["plantName"] = plantName
+            map["recordDate"] = recordDate
+            map["pestInfo"] = pestInfo
+            map["memo"] =memo
+
+        }
+
+        override fun getParams(): Map<String, String> {
+            return map
         }
     }
 

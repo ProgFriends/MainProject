@@ -260,6 +260,7 @@ class PestActivity : AppCompatActivity() {
         when (predictedLabel.toLowerCase()) {
             "leafspot" -> {
                 val intent = Intent(this, PestLeafSpotActivity::class.java)
+
                 startActivity(intent)
             }
             "sootymold" -> {
