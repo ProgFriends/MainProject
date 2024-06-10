@@ -113,7 +113,12 @@ class CalenderDetailActivity : AppCompatActivity() {
                     startActivity(Intent(this@CalenderDetailActivity, HomeActivity::class.java))
                     true
                 }
-
+                R.id.page_fv -> {
+                    // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@CalenderDetailActivity, PestActivity::class.java))
+                    true
+                }
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     startActivity(Intent(this@CalenderDetailActivity, CalendarActivity::class.java))

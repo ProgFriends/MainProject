@@ -40,6 +40,7 @@ class CalenderAddActivity : AppCompatActivity() {
 
     private var plantSpecies: String? = ""
     private var plantName: String = ""
+    private var pestInfo: String = ""
     private var memo: String = ""
     private var recordDate: String = ""
     private var plantImageBytes: ByteArray = byteArrayOf()
@@ -61,10 +62,16 @@ class CalenderAddActivity : AppCompatActivity() {
         val tv_selectedDate = findViewById<TextView>(R.id.TV_selectedDate)
         tv_selectedDate.text = recordDate
 
+
         ImgV_calendarImage = findViewById(R.id.ImgV_calendarImage)
         spinner_nicknameSpecies = findViewById(R.id.nicknameSpinner)
         var tv_memo = findViewById<TextView>(R.id.TV_CalendarMemo)
         var btn_regicalendar = findViewById<Button>(R.id.Btn_RegiCalendar)
+
+        // 넘어온 병충해 정보가 있다면 받기
+        if(intent.getStringExtra("pestInfo") != null) {
+            pestInfo = intent.getStringExtra("pestInfo").toString()
+        }
 
 
         // 인텐트로 받아온 이미지 있으면 세팅
@@ -82,27 +89,33 @@ class CalenderAddActivity : AppCompatActivity() {
 
         // 식물 종 입력 (spinner 어댑터)
         var plantNameList = HomeActivity.adapter.plantList.map { it.PlantName }
-        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plantNameList)
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, plantNameList)
         spinner_nicknameSpecies.adapter = adapter
         spinner_nicknameSpecies.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var item = parent?.getItemAtPosition(position)
                 plantName = item.toString().substringBefore("(").trim()
+                plantSpecies = HomeActivity.getPlantSpeciesByPlantName(plantName)      // 식물 이름에 해당하는 식물 종을 가져옴
+                Log.d("등록하려는 식물 종:", plantSpecies!!)
             }
             override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
 
         btn_regicalendar.setOnClickListener{
-            if (imageUri == null) {
+            if (imageUri == null && byteArray == null) {
                 Toast.makeText(applicationContext, "식물 사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
             else {
-                plantImageBytes = imageUri?.let { getByteArrayFromUri(this, it) }
-                    ?: byteArrayOf()       // 이미지를 byteArray로 읽어오기
+                if(imageUri != null) {      // 이미지를 byteArray로 읽어오기
+                    plantImageBytes = imageUri?.let { getByteArrayFromUri(this, it) } ?: byteArrayOf()
+                }
+                else {
+                    plantImageBytes = byteArray!!
+                }
 
                 memo = tv_memo.text.toString()
 
-                Log.d("plantimage", imageUri.toString())
+                // Log.d("plantimage", imageUri.toString())
 
                 val CalendarRegiRequest = MultipartRequest(
                     url = "http://15.165.56.246/android_calendarInput_mysql.php",
@@ -140,10 +153,7 @@ class CalenderAddActivity : AppCompatActivity() {
                     }
                 )
                 LoginActivity.queue.add(CalendarRegiRequest)
-
-                plantSpecies = HomeActivity.getPlantSpeciesByPlantName(plantName)      // 식물 이름에 해당하는 식물 종을 가져옴
-                Log.d("등록하려는 식물 종:", plantSpecies!!)
-                CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, "", memo))
+                CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
                 CalenderDetailActivity.adapter.notifyDataSetChanged()
                 finish()
             }
@@ -156,6 +166,38 @@ class CalenderAddActivity : AppCompatActivity() {
                 finish() // 현재 액티비티 종료
             }
         })
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        // 바텀 네비게이션 아이템 클릭 리스너 설정
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.page_home -> {
+                    // 홈 아이템 클릭 시 홈 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@CalenderAddActivity, HomeActivity::class.java))
+                    true
+                }
+                R.id.page_fv -> {
+                    // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@CalenderAddActivity, PestActivity::class.java))
+                    true
+                }
+                R.id.page_ps -> {
+                    // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                    //finish()
+                    //startActivity(Intent(this@CalenderAddActivity, CalendarActivity::class.java))
+                    true
+                }
+                R.id.page_show -> {
+                    // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
+                    finish()
+                    startActivity(Intent(this@CalenderAddActivity, WebCamActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     inner class MultipartRequest(
@@ -258,13 +300,4 @@ class CalenderAddActivity : AppCompatActivity() {
             null
         }
     }
-
-    /*
-    fun getImageUri(context: Context, inImage: Bitmap): Uri? {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path: String? = MediaStore.Images.Media.insertImage(context.contentResolver, inImage, "Title", null)
-        return Uri.parse(path)
-    }
-     */
 }

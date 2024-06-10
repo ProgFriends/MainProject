@@ -30,6 +30,7 @@ class PestSootyMold : AppCompatActivity() {
             val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             intent.putExtra("byteArrayExtra", receivedByteArray)
             intent.putExtra("currentDate", currentDate)
+            intent.putExtra("pestInfo", "그을음병")
             //Log.d("보낼날짜: ", currentDate)
             startActivity(intent)
         }
