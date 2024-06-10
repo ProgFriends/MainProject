@@ -92,7 +92,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#e0e7ee"
+                android:background="#6EC180"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -102,8 +102,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="SUN"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -112,8 +112,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="MON"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -122,8 +122,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="TUE"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -132,8 +132,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="WED"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -142,8 +142,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="THU"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -152,8 +152,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="FRI"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -162,8 +162,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="SAT"
-                    android:textColor="#969a9b"
-                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
