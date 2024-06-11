@@ -36,5 +36,20 @@ class PestLeafSpotActivity : AppCompatActivity() {
             //Log.d("보낼날짜: ", currentDate)
             startActivity(intent)
         }
+
+        // Add onClickListeners for recommend1 and recommend2
+        val recommend1 = findViewById<ImageView>(R.id.recommend1)
+        val recommend2 = findViewById<ImageView>(R.id.recommend2)
+
+        recommend1.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.coupang.com/vp/products/5421663779?itemId=8190313211&vendorItemId=75478441990&q=%ED%81%B4%EB%A6%B0%EC%8B%B96&itemsCount=36&searchId=ce6d92adc7444a458c0b4992e0ba1047&rank=1&isAddedCart="))
+            startActivity(intent)
+        }
+
+        recommend2.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.coupang.com/vp/products/1503826448?itemId=2581945436&vendorItemId=70574022544&q=%EA%B0%88%EB%B0%98%EB%82%99%EC%95%A0&itemsCount=36&searchId=8e1a3da6941c48a1b540b9ceaa42c5d7&rank=1&isAddedCart="))
+            startActivity(intent)
+        }
+
     }
 }

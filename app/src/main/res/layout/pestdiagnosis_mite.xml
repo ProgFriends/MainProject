@@ -279,9 +279,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="75dp"
+                    android:layout_marginStart="45dp"
                     android:layout_marginTop="948dp"
-                    android:text="클린싹6"
+                    android:text="그린썬 그린킬"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     />
