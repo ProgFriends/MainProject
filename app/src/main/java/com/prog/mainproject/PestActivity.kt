@@ -138,7 +138,7 @@ class PestActivity : AppCompatActivity() {
             val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
             Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-            byteArray = bitmapToByteArray(bp)
+            byteArray = bitmapToByteArray(resizedBitmap)
 
             startDiagnosisActivity(originalPredictedLabel)
         }
@@ -218,7 +218,7 @@ class PestActivity : AppCompatActivity() {
         val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
         Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-        byteArray = bitmapToByteArray(selectedBitmap)
+        byteArray = bitmapToByteArray(resizedBitmap)
 
         startDiagnosisActivity(originalPredictedLabel)
     }
