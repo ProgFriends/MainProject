@@ -139,8 +139,14 @@ class CalenderAddActivity : AppCompatActivity() {
 
                             if (success) {
                                 Toast.makeText(applicationContext, "기록을 완료했습니다.", Toast.LENGTH_SHORT).show()
-                                //CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
-                                //CalenderDetailActivity.adapter.notifyDataSetChanged()
+                                if (CalenderDetailActivity.adapter != null) {
+                                    CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
+                                    CalenderDetailActivity.adapter.notifyDataSetChanged()
+                                }
+                                if (CalendarActivity.scheduleRecyclerViewAdapter != null) {
+                                    CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
+                                    CalendarActivity.scheduleRecyclerViewAdapter.notifyDataSetChanged()
+                                }
                             } else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                             }
