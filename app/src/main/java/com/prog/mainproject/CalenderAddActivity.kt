@@ -33,9 +33,7 @@ class CalenderAddActivity : AppCompatActivity() {
 
     private lateinit var ImgV_calendarImage: ImageView
     private lateinit var spinner_nicknameSpecies : Spinner
-    private var IsPest: String = ""
     private var imageUri: Uri? = null
-    private var imageBitmap: Bitmap? = null
     private var byteArray: ByteArray? = null
 
     private var plantSpecies: String? = ""
@@ -125,7 +123,7 @@ class CalenderAddActivity : AppCompatActivity() {
                         "plantName" to plantName,
                         "plantSpecies" to plantSpecies!!,
                         "recordDate" to recordDate,
-                        "pestInfo" to "",
+                        "pestInfo" to pestInfo!!,
                         "memo" to memo
                     ),
                     listener = { response ->
@@ -141,6 +139,8 @@ class CalenderAddActivity : AppCompatActivity() {
 
                             if (success) {
                                 Toast.makeText(applicationContext, "기록을 완료했습니다.", Toast.LENGTH_SHORT).show()
+                                //CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
+                                //CalenderDetailActivity.adapter.notifyDataSetChanged()
                             } else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                             }
@@ -153,8 +153,6 @@ class CalenderAddActivity : AppCompatActivity() {
                     }
                 )
                 LoginActivity.queue.add(CalendarRegiRequest)
-                CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
-                CalenderDetailActivity.adapter.notifyDataSetChanged()
                 finish()
             }
         }

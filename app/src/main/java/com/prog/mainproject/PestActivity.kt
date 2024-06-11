@@ -124,10 +124,10 @@ class PestActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
             // 이미지 캡처 성공 처리
             val bp = data?.extras?.get("data") as Bitmap
-            val rotatedBitmap = rotateBitmap(bp, 90f)
+            // val rotatedBitmap = rotateBitmap(bp, 90f)
             val cx = 200
             val cy = 200
-            val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, cx, cy, false)
+            val resizedBitmap = Bitmap.createScaledBitmap(bp, cx, cy, false)
             val pixels = IntArray(cx * cy)
             resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
             val inputImg = getInputImage(pixels, cx, cy)
@@ -204,10 +204,10 @@ class PestActivity : AppCompatActivity() {
         // 이 부분에서 선택한 이미지에 대한 진단을 수행
         // 예를 들어, 위의 handleImageCaptureResult 메서드와 유사한 코드를 사용할 수 있음
         // 이 코드는 선택한 이미지에 대해 진단을 수행하고 결과를 출력하는 부분을 나타냅니다.
-        val rotatedBitmap = rotateBitmap(selectedBitmap, 90f)
+        // val rotatedBitmap = rotateBitmap(selectedBitmap, 90f)
         val cx = 200
         val cy = 200
-        val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, cx, cy, false)
+        val resizedBitmap = Bitmap.createScaledBitmap(selectedBitmap, cx, cy, false)
         val pixels = IntArray(cx * cy)
         resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
         val inputImg = getInputImage(pixels, cx, cy)
@@ -311,32 +311,6 @@ class PestActivity : AppCompatActivity() {
         }
     }
 
-    fun getImageUri(context: Context, inImage: Bitmap): Uri? {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path: String? = MediaStore.Images.Media.insertImage(context.contentResolver, inImage, "Title", null)
-        return Uri.parse(path)
-    }
-
-
-    private fun saveImageToExternalStorage(bitmap: Bitmap): Uri? {
-        val imagesDir = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "{ProgFriends}")
-        imagesDir.mkdirs()
-        val timestamp = System.currentTimeMillis()
-        val imageFileName = "IMG_${timestamp}.jpg"
-        val imageFile = File(imagesDir, imageFileName)
-
-        return try {
-            val outputStream = FileOutputStream(imageFile)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-            outputStream.flush()
-            outputStream.close()
-            FileProvider.getUriForFile(this, "${packageName}.provider", imageFile)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            null
-        }
-    }
 
     private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
         val stream = ByteArrayOutputStream()
