@@ -43,8 +43,7 @@ class CalendarActivity : AppCompatActivity() {
 
         initView()
         var date = tv_current_month.text.toString()
-        getData(date)
-
+        getData(tv_current_month.text.toString())
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
@@ -96,10 +95,12 @@ class CalendarActivity : AppCompatActivity() {
 
         tv_prev_month.setOnClickListener {
             scheduleRecyclerViewAdapter.changeToPrevMonth()
+            getData(tv_current_month.text.toString())
         }
 
         tv_next_month.setOnClickListener {
             scheduleRecyclerViewAdapter.changeToNextMonth()
+            getData(tv_current_month.text.toString())
         }
     }
 
@@ -113,6 +114,7 @@ class CalendarActivity : AppCompatActivity() {
         val year = parts[0]
         val month = parts[1]
         val formattedDate = "${year}-${month}"
+        scheduleRecyclerViewAdapter.CalendarMonthList.clear()
 
         val responseListener = Response.Listener<String> { response ->
             try {

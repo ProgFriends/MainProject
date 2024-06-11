@@ -17,12 +17,18 @@
 
     <TextView
         android:id="@+id/TV_JustRecord"
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+        android:background="@drawable/rg_bg"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="invisible"
+        android:backgroundTint="#379F6A"/>
 
     <TextView
         android:id="@+id/TV_IsPest"
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+        android:background="@drawable/rg_bg"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="invisible"
+        android:backgroundTint="#b22222"/>
 
 </LinearLayout>

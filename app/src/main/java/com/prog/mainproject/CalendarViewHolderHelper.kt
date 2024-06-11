@@ -9,6 +9,8 @@ import java.util.*
 
 open class CalendarViewHolderHelper(val containerView: View, val baseCalendar: BaseCalendar) : RecyclerView.ViewHolder(containerView) {
     val tv_date: TextView = containerView.findViewById(R.id.tv_date)
+    val tv_JustRecord: TextView = containerView.findViewById(R.id.TV_JustRecord)
+    val tv_IsPest: TextView = containerView.findViewById(R.id.TV_IsPest)
 
     init {
         // 각 날짜를 표시하는 TextView에 클릭 리스너를 설정합니다.

@@ -2,6 +2,7 @@ package com.prog.mainproject
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -40,11 +41,28 @@ class CalenderRecyAdapter(val Activity: CalendarActivity) : RecyclerView.Adapter
         else holder.tv_date.setTextColor(Color.parseColor("#676d6e"))
 
         if (position < baseCalendar.prevMonthTailOffset || position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate) {
-            holder.tv_date.alpha = 0.3f
+            holder.tv_date.alpha = 0.3f     // 텍스트를 약간 투명하게
         } else {
             holder.tv_date.alpha = 1f
         }
         holder.tv_date.text = baseCalendar.data[position].toString()
+
+        // 캘린더에서 현재 날짜 가져오기
+        val currentDate = baseCalendar.data[position]
+
+        // 현재 날짜에 대한 기록 확인
+        CalendarMonthList.forEach { record ->
+            val recordDay = record.recordDate.split("-")[2].toInt()
+            if (recordDay == currentDate) {
+                if (position >= baseCalendar.prevMonthTailOffset && position < baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate) {
+                    if (record.pestInfo.isNullOrEmpty()){
+                        holder.tv_JustRecord.visibility = View.VISIBLE
+                    }else {
+                        holder.tv_IsPest.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
     }
 
     fun changeToPrevMonth() {
