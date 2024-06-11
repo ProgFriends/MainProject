@@ -2,6 +2,8 @@ package com.prog.mainproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.widget.CalendarView
 import android.widget.ImageView
@@ -11,7 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.json.JSONException
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,6 +42,9 @@ class CalendarActivity : AppCompatActivity() {
         tv_current_month = findViewById(R.id.tv_current_month)
 
         initView()
+        var date = tv_current_month.text.toString()
+        getData(date)
+
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
@@ -73,7 +83,6 @@ class CalendarActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 
     fun initView() {
@@ -97,5 +106,75 @@ class CalendarActivity : AppCompatActivity() {
     fun refreshCurrentMonth(calendar: Calendar) {
         val sdf = SimpleDateFormat("yyyy MM", Locale.KOREAN)
         tv_current_month.text = sdf.format(calendar.time)
+    }
+
+    fun getData(date: String){
+        val parts = date.split(" ")
+        val year = parts[0]
+        val month = parts[1]
+        val formattedDate = "${year}-${month}"
+
+        val responseListener = Response.Listener<String> { response ->
+            try {
+                val jsonObject = JSONObject(response)
+                Log.d("월별 달력 리스트 로딩: Json객체", jsonObject.toString())
+                val plantsArray = jsonObject.getJSONArray("calendar")
+
+
+                val success = jsonObject.getBoolean("success")
+                val message = jsonObject.getString("message")
+
+                if (success) { // mysql 데이터 로딩에 성공한 경우
+                    for (i in 0 until plantsArray.length()) {
+                        val plantObject = plantsArray.getJSONObject(i)
+                        val plantSpecies = plantObject.getString("plantSpecies")
+                        val plantName = plantObject.getString("plantName")
+                        val recordDate = plantObject.getString("recordDate")
+                        val pestInfo = plantObject.getString("pestInfo")
+
+                        // 문자열을 Date 객체로 변환
+                        val recordDateObj = stringToDate(recordDate, "yyyy-MM-dd")
+
+                        // 식물 객체 생성 후 리스트에 추가
+                        scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies, plantName, recordDate, pestInfo))
+                    }
+                    scheduleRecyclerViewAdapter.notifyDataSetChanged()
+                    Log.d("가져온 월별 달력 리스트: ", scheduleRecyclerViewAdapter.CalendarMonthList.toString())
+                }
+                else { // mysql 데이터 로딩에 실패한 경우
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                    return@Listener
+                }
+            }
+            catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        }
+
+        val calendarmonthlistRequest = CalendarMonthListRequest(LoginActivity.UID, formattedDate, responseListener)
+        val queue: RequestQueue = LoginActivity.queue
+        queue.add(calendarmonthlistRequest)
+
+    }
+
+    // 문자열을 Date 객체로 변환하는 함수
+    private fun stringToDate(dateString: String, format: String): Date {
+        val formatter = SimpleDateFormat(format)
+        return formatter.parse(dateString) ?: Date()
+    }
+
+    inner class CalendarMonthListRequest(UID: String, selectedMonth: String, listener: Response.Listener<String>) :
+        StringRequest(Method.POST, "http://15.165.56.246/android_calendarShowbyMonth_mysql.php", listener, null) {
+
+        private val map: MutableMap<String, String> = HashMap()
+
+        init {
+            map["UID"] = UID
+            map["selectedMonth"] = selectedMonth
+        }
+
+        override fun getParams(): Map<String, String> {
+            return map
+        }
     }
 }

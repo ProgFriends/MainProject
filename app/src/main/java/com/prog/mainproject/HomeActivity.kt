@@ -83,36 +83,9 @@ class HomeActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                     return@Listener
                 }
-            } catch (e: JSONException) {
-                e.printStackTrace()
             }
-
-
-            val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            // 바텀 네비게이션 아이템 클릭 리스너 설정
-            bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.page_home -> {
-                        // 홈 아이템 클릭 시 홈 화면으로 이동
-                        true
-                    }
-                    R.id.page_fv -> {
-                        // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
-                        startActivity(Intent(this@HomeActivity, PestActivity::class.java))
-                        true
-                    }
-                    R.id.page_ps -> {
-                        // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
-                        startActivity(Intent(this@HomeActivity, CalendarActivity::class.java))
-                        true
-                    }
-                    R.id.page_show -> {
-                        // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
-                        startActivity(Intent(this@HomeActivity, WebCamActivity::class.java))
-                        true
-                    }
-                    else -> false
-                }
+            catch (e: JSONException) {
+                e.printStackTrace()
             }
         }
 
@@ -124,6 +97,33 @@ class HomeActivity : AppCompatActivity() {
         btn_AddPlant.setOnClickListener{
             val intent = Intent(applicationContext, RegisterInformationActivityActivity::class.java)
             startActivity(intent)
+        }
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        // 바텀 네비게이션 아이템 클릭 리스너 설정
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.page_home -> {
+                    // 홈 아이템 클릭 시 홈 화면으로 이동
+                    true
+                }
+                R.id.page_fv -> {
+                    // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
+                    startActivity(Intent(this@HomeActivity, PestActivity::class.java))
+                    true
+                }
+                R.id.page_ps -> {
+                    // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
+                    startActivity(Intent(this@HomeActivity, CalendarActivity::class.java))
+                    true
+                }
+                R.id.page_show -> {
+                    // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
+                    startActivity(Intent(this@HomeActivity, WebCamActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
     }
 

@@ -2,16 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_date"
     android:layout_width="50dp"
-    android:layout_height="65dp">
+    android:layout_height="65dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:textColor="#676d6e"
         android:textSize="15dp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TV_JustRecord"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/TV_IsPest"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
 
 </LinearLayout>

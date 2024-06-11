@@ -6,9 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
+data class CalendarMonthClass(
+    var plantSpecies: String,
+    var plantName: String,
+    var recordDate: String,
+    var pestInfo: String
+)
+
 class CalenderRecyAdapter(val Activity: CalendarActivity) : RecyclerView.Adapter<CalendarViewHolderHelper>() {
 
     val baseCalendar = BaseCalendar()
+    var CalendarMonthList = ArrayList<CalendarMonthClass>()
 
     init {
         baseCalendar.initBaseCalendar {
