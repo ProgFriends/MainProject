@@ -24,7 +24,9 @@ import java.util.*
 
 class CalendarActivity : AppCompatActivity() {
 
-    lateinit var scheduleRecyclerViewAdapter: CalenderRecyAdapter
+    companion object {
+        lateinit var scheduleRecyclerViewAdapter: CalenderRecyAdapter
+    }
 
     private lateinit var rv_schedule: RecyclerView
     private lateinit var tv_prev_month: TextView
@@ -134,8 +136,6 @@ class CalendarActivity : AppCompatActivity() {
                         val recordDate = plantObject.getString("recordDate")
                         val pestInfo = plantObject.getString("pestInfo")
 
-                        // 문자열을 Date 객체로 변환
-                        val recordDateObj = stringToDate(recordDate, "yyyy-MM-dd")
 
                         // 식물 객체 생성 후 리스트에 추가
                         scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies, plantName, recordDate, pestInfo))

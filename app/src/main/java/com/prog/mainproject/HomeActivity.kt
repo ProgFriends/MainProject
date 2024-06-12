@@ -53,7 +53,6 @@ class HomeActivity : AppCompatActivity() {
                 Log.d("식물 리스트 로딩: Json객체", jsonObject.toString())
                 val plantsArray = jsonObject.getJSONArray("plants")
 
-
                 val success = jsonObject.getBoolean("success")
                 val message = jsonObject.getString("message")
 
