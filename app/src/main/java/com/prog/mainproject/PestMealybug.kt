@@ -22,6 +22,7 @@ class PestMealybug : AppCompatActivity() {
 
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
+            finish()
             val intent = Intent(this@PestMealybug, CalenderAddActivity::class.java)
             startActivity(intent)
         }
