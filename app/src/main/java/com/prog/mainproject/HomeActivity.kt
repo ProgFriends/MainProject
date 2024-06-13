@@ -38,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.home)
 
         adapter = PlantListAdapter()
+
         // 리사이클러뷰에 레이아웃 매니저 설정
         val layoutManager = LinearLayoutManager(this)
         val recyclerView = findViewById<RecyclerView>(R.id.RCV_PlantList)
@@ -46,10 +47,14 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
-        //adapter.plantList.clear()
+
+
 
         val responseListener = Response.Listener<String> { response ->
             try {
+
+                adapter.plantList.clear()
+
                 val jsonObject = JSONObject(response)
                 Log.d("식물 리스트 로딩: Json객체", jsonObject.toString())
                 val plantsArray = jsonObject.getJSONArray("plants")
@@ -58,6 +63,9 @@ class HomeActivity : AppCompatActivity() {
                 val message = jsonObject.getString("message")
 
                 if (success) { // mysql 데이터 로딩에 성공한 경우
+
+                    img_YourPlant.visibility = View.INVISIBLE
+
                     for (i in 0 until plantsArray.length()) {
                         val plantObject = plantsArray.getJSONObject(i)
                         val plantSpecies = plantObject.getString("plantSpecies")
@@ -72,9 +80,7 @@ class HomeActivity : AppCompatActivity() {
 
                         // 식물 객체 생성 후 리스트에 추가
                         adapter.plantList.add(PlantListClass(plantSpecies, plantName, plantImageByteArray, bringDateObj))
-                        if (adapter.plantList.size != 0) {
-                            img_YourPlant.visibility = View.INVISIBLE
-                        }
+
                     }
                     adapter.notifyDataSetChanged()
 
