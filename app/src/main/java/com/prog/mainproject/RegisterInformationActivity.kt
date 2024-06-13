@@ -251,7 +251,7 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                 data?.data?.let {
                     imageUri = it
                     imageBitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(it))   // 이미지를 비트맵으로 변환하여 변수에 저장
-                    imageBitmap = resizeBitmap(imageBitmap!!, 800) // 이미지 리사이즈
+                    imageBitmap = resizeBitmap(imageBitmap!!, 400) // 이미지 리사이즈
                     ImgV_plantImage.setImageURI(imageUri)
                 }
             }
@@ -281,7 +281,7 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                 buffer.write(bufferArray, 0, len)
             }
             val bitmap = BitmapFactory.decodeByteArray(buffer.toByteArray(), 0, buffer.size())
-            val resizedBitmap = resizeBitmap(bitmap, 800) // 이미지 리사이즈
+            val resizedBitmap = resizeBitmap(bitmap, 400) // 이미지 리사이즈
             val resizedBuffer = ByteArrayOutputStream()
             resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, resizedBuffer)
             resizedBuffer.toByteArray()
