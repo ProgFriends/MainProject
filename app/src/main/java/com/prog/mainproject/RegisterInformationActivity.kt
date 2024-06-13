@@ -251,6 +251,7 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                 data?.data?.let {
                     imageUri = it
                     imageBitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(it))   // 이미지를 비트맵으로 변환하여 변수에 저장
+                    imageBitmap = resizeBitmap(imageBitmap!!, 800) // 이미지 리사이즈
                     ImgV_plantImage.setImageURI(imageUri)
                 }
             }
@@ -279,9 +280,29 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
             while (inputStream.read(bufferArray).also { len = it } != -1) {
                 buffer.write(bufferArray, 0, len)
             }
-            buffer.toByteArray()
+            val bitmap = BitmapFactory.decodeByteArray(buffer.toByteArray(), 0, buffer.size())
+            val resizedBitmap = resizeBitmap(bitmap, 800) // 이미지 리사이즈
+            val resizedBuffer = ByteArrayOutputStream()
+            resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, resizedBuffer)
+            resizedBuffer.toByteArray()
         } else {
             null
         }
+    }
+
+    private fun resizeBitmap(source: Bitmap, maxLength: Int): Bitmap {
+        val aspectRatio = source.width.toFloat() / source.height.toFloat()
+        val width: Int
+        val height: Int
+
+        if (aspectRatio > 1) {
+            width = maxLength
+            height = (maxLength / aspectRatio).toInt()
+        } else {
+            height = maxLength
+            width = (maxLength * aspectRatio).toInt()
+        }
+
+        return Bitmap.createScaledBitmap(source, width, height, true)
     }
 }
