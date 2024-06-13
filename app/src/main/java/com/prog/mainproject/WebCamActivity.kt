@@ -26,15 +26,19 @@ class WebCamActivity : AppCompatActivity() {
         webSettings.useWideViewPort = true
         webSettings.loadWithOverviewMode = true
         myWebView.webViewClient = WebViewClient()
-        myWebView.loadUrl("http://172.20.3.46:5000")
+        myWebView.loadUrl("http://172.20.31.211:5000")
 
-        val backIcon = findViewById<ImageView>(R.id.back_icon)
+/*
+        val backIcon = findViewById<ImageView>(R.id.back_icon2)
         backIcon.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 finish() // 현재 액티비티 종료
             }
         })
+ */
 
+
+/*
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         // 바텀 네비게이션 아이템 클릭 리스너 설정
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -66,5 +70,6 @@ class WebCamActivity : AppCompatActivity() {
                 else -> false
             }
         }
+         */
     }
 }

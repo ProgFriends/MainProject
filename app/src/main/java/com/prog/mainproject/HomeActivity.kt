@@ -46,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
+        //adapter.plantList.clear()
 
         val responseListener = Response.Listener<String> { response ->
             try {
