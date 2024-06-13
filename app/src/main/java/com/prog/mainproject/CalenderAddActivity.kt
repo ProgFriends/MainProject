@@ -1,5 +1,6 @@
 package com.prog.mainproject
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -65,6 +66,7 @@ class CalenderAddActivity : AppCompatActivity() {
         spinner_nicknameSpecies = findViewById(R.id.nicknameSpinner)
         var tv_memo = findViewById<TextView>(R.id.TV_CalendarMemo)
         var btn_regicalendar = findViewById<Button>(R.id.Btn_RegiCalendar)
+        val registerCamera = findViewById<TextView>(R.id.registerCamera)
 
         // 넘어온 병충해 정보가 있다면 받기
         if(intent.getStringExtra("pestInfo") != null) {
@@ -82,6 +84,11 @@ class CalenderAddActivity : AppCompatActivity() {
         // 이미지 뷰 클릭 시, 갤러리에서 사진을 선택하고 이미지 뷰를 해당 사진으로 대체
         ImgV_calendarImage.setOnClickListener{
             openGallery()
+        }
+
+        // 카메라 등록 클릭 시, 카메라 열기
+        registerCamera.setOnClickListener {
+            openCamera()
         }
 
 
@@ -189,8 +196,8 @@ class CalenderAddActivity : AppCompatActivity() {
                 }
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
-                    //finish()
-                    //startActivity(Intent(this@CalenderAddActivity, CalendarActivity::class.java))
+                    finish()
+                    startActivity(Intent(this@CalenderAddActivity, CalendarActivity::class.java))
                     true
                 }
                 R.id.page_show -> {
@@ -287,6 +294,34 @@ class CalenderAddActivity : AppCompatActivity() {
         val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         pickImageLauncher.launch(gallery)
     }
+
+
+    private val takePictureLauncher: ActivityResultLauncher<Uri> = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            imageUri?.let {
+                ImgV_calendarImage.setImageURI(it)
+                // 나중에 사용할 이미지 byteArray 저장
+                plantImageBytes = getByteArrayFromUri(this, it) ?: byteArrayOf()
+            }
+        }
+    }
+
+    private fun openCamera() {
+        imageUri = createImageUri() // 이미지 URI 생성
+        imageUri?.let {
+            takePictureLauncher.launch(it)
+        }
+    }
+
+    private fun createImageUri(): Uri? {
+        val contentResolver = contentResolver
+        val contentValues = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "new_image.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+        }
+        return contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+    }
+
 
     // Uri 객체를 바이트어레이로 변환
     fun getByteArrayFromUri(context: Context, uri: Uri): ByteArray? {
