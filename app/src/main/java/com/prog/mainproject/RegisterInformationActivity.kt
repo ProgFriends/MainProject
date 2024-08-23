@@ -70,7 +70,7 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         }
 
         // 식물 종 입력 (spinner 어댑터)
-        var plantSpeciesList = listOf("scindapsus(스킨답서스)", "hoya(호야)", "frydek(알로카시아)", "corn(옥수수)", "monstera(몬스테라)", "oak(오크)", "staghorn(박쥐난)", "ivy(아이비)")
+        var plantSpeciesList = listOf("scindapsus(스킨답서스)", "hoya(호야)", "frydek(알로카시아)", "corn(행운목)", "monstera(몬스테라)", "oak(떡갈고무나무)", "staghorn(박쥐난)", "ivy(아이비)")
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plantSpeciesList)
         spinner_plantSpecies.adapter = adapter
         spinner_plantSpecies.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
