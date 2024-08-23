@@ -27,6 +27,7 @@ class PestSootyMold : AppCompatActivity() {
 
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
+            finish()
             val intent = Intent(this@PestSootyMold, CalenderAddActivity::class.java)
             val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             intent.putExtra("byteArrayExtra", receivedByteArray)

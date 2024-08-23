@@ -26,7 +26,7 @@ class WebCamActivity : AppCompatActivity() {
         webSettings.useWideViewPort = true
         webSettings.loadWithOverviewMode = true
         myWebView.webViewClient = WebViewClient()
-        myWebView.loadUrl("http://172.20.31.211:5000")
+        myWebView.loadUrl("http://172.20.1.233:5000")
 
 /*
         val backIcon = findViewById<ImageView>(R.id.back_icon2)

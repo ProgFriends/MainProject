@@ -138,7 +138,7 @@ class PestActivity : AppCompatActivity() {
             val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
             Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-            byteArray = bitmapToByteArray(resizedBitmap)
+            byteArray = bitmapToByteArray(bp)
 
             startDiagnosisActivity(originalPredictedLabel)
         }
@@ -218,7 +218,8 @@ class PestActivity : AppCompatActivity() {
         val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
         Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-        byteArray = bitmapToByteArray(resizedBitmap)
+        // var imageBitmap = resizeBitmap(selectedBitmap, 400) // 이미지 리사이즈
+        byteArray = bitmapToByteArray(selectedBitmap)
 
         startDiagnosisActivity(originalPredictedLabel)
     }
@@ -313,8 +314,25 @@ class PestActivity : AppCompatActivity() {
 
 
     private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+        var imageBitmap = resizeBitmap(bitmap, 400) // 이미지 리사이즈
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
         return stream.toByteArray()
+    }
+
+    private fun resizeBitmap(source: Bitmap, maxLength: Int): Bitmap {
+        val aspectRatio = source.width.toFloat() / source.height.toFloat()
+        val width: Int
+        val height: Int
+
+        if (aspectRatio > 1) {
+            width = maxLength
+            height = (maxLength / aspectRatio).toInt()
+        } else {
+            height = maxLength
+            width = (maxLength * aspectRatio).toInt()
+        }
+
+        return Bitmap.createScaledBitmap(source, width, height, true)
     }
 }

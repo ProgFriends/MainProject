@@ -45,7 +45,6 @@ class CalenderAddActivity : AppCompatActivity() {
     private var plantImageBytes: ByteArray = byteArrayOf()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calender_add)
@@ -327,16 +326,34 @@ class CalenderAddActivity : AppCompatActivity() {
     fun getByteArrayFromUri(context: Context, uri: Uri): ByteArray? {
         val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
         return if (inputStream != null) {
+            // Decode the input stream into a bitmap
+            val originalBitmap = BitmapFactory.decodeStream(inputStream)
+
+            // Resize the bitmap to 400x400
+            val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 400, 400, true)
+
+            // Convert the resized bitmap to a byte array
             val buffer = ByteArrayOutputStream()
-            val bufferSize = 1024
-            val bufferArray = ByteArray(bufferSize)
-            var len: Int
-            while (inputStream.read(bufferArray).also { len = it } != -1) {
-                buffer.write(bufferArray, 0, len)
-            }
+            resizedBitmap.compress(Bitmap.CompressFormat.PNG, 100, buffer)
             buffer.toByteArray()
         } else {
             null
         }
+    }
+
+    private fun resizeBitmap(source: Bitmap, maxLength: Int): Bitmap {
+        val aspectRatio = source.width.toFloat() / source.height.toFloat()
+        val width: Int
+        val height: Int
+
+        if (aspectRatio > 1) {
+            width = maxLength
+            height = (maxLength / aspectRatio).toInt()
+        } else {
+            height = maxLength
+            width = (maxLength * aspectRatio).toInt()
+        }
+
+        return Bitmap.createScaledBitmap(source, width, height, true)
     }
 }

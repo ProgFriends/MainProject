@@ -21,12 +21,14 @@ class PestConfusePowderyMealy : AppCompatActivity() {
 
         val goMealy = findViewById<Button>(R.id.goMealybug)
         goMealy.setOnClickListener{
+            finish()
             val intent = Intent(this@PestConfusePowderyMealy, PestMealybug::class.java)
             startActivity(intent)
         }
 
         val goPowder = findViewById<Button>(R.id.goPowdery)
         goPowder.setOnClickListener{
+            finish()
             val intent = Intent(this@PestConfusePowderyMealy, PestPowdery::class.java)
             startActivity(intent)
         }
