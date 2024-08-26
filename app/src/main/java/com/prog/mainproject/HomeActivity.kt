@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
@@ -44,6 +45,7 @@ class HomeActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.RCV_PlantList)
         val btn_AddPlant = findViewById<ImageButton>(R.id.Btn_AddPlant)
         val img_YourPlant = findViewById<ImageView>(R.id.image_YourpPant)
+        val btn_Recommend = findViewById<Button>(R.id.Btn_Recommend)
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
@@ -65,6 +67,7 @@ class HomeActivity : AppCompatActivity() {
                 if (success) { // mysql 데이터 로딩에 성공한 경우
 
                     img_YourPlant.visibility = View.INVISIBLE
+                    btn_Recommend.visibility = View.INVISIBLE
 
                     for (i in 0 until plantsArray.length()) {
                         val plantObject = plantsArray.getJSONObject(i)
@@ -102,6 +105,11 @@ class HomeActivity : AppCompatActivity() {
 
         btn_AddPlant.setOnClickListener{
             val intent = Intent(applicationContext, RegisterInformationActivityActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_Recommend.setOnClickListener{
+            val intent = Intent(applicationContext, RecommendActivity_1st::class.java)
             startActivity(intent)
         }
 

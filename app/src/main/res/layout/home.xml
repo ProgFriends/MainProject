@@ -34,6 +34,19 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/input_your_plant" />
 
+    <Button
+        android:id="@+id/Btn_Recommend"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:radius="20dp"
+        android:text="식물 추천 받기"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_YourpPant"
+        tools:ignore="TextContrastCheck" />
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="0dp"
