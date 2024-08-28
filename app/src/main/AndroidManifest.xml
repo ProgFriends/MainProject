@@ -43,14 +43,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RecommedActivity_2nd"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".RecommendActivity"
+            android:name=".RecommendActivity_2nd"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

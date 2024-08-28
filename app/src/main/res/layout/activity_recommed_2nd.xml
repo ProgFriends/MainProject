@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecommedActivity_2nd">
+    tools:context=".RecommendActivity_2nd">
 
     <Button
-        android:id="@+id/Btn_Yes_2nd"
+        android:id="@+id/Btn_Planterior_2nd"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteY="439dp" />
 
     <Button
-        android:id="@+id/Btn_No_2nd"
+        android:id="@+id/Btn_AirPurify_2nd"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Btn_Yes_2nd"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_Planterior_2nd"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -71,7 +71,7 @@
         android:layout_height="250dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/Btn_Yes_2nd"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_Planterior_2nd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView7"
