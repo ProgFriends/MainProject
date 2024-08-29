@@ -30,5 +30,8 @@ class RecommendActivity_5th : AppCompatActivity() {
 
     private fun GoRecommend(){      // 여기서 각 문항의 true/false에 따라 식물 추천 페이지로 넘어갈거임!
 
+
+
+        startActivity(Intent(this, RecommendActivity::class.java))
     }
 }
