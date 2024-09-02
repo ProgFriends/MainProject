@@ -21,11 +21,13 @@ class RecommendActivity_2nd : AppCompatActivity() {
 
         btn_Recommen_P_2nd.setOnClickListener{
             Q_2nd_Planterior = true
+            Q_2nd_AirPurify = false
             val intent = Intent(applicationContext, RecommendActivity_3rd::class.java)
             startActivity(intent)
         }
 
         btn_Recommen_A_2nd.setOnClickListener{
+            Q_2nd_Planterior = false
             Q_2nd_AirPurify = true
             val intent = Intent(applicationContext, RecommendActivity_3rd::class.java)
             startActivity(intent)

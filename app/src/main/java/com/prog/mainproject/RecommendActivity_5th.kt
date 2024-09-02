@@ -20,18 +20,14 @@ class RecommendActivity_5th : AppCompatActivity() {
 
         btn_Recommen_Y_5th.setOnClickListener{
             Q_5th = true
-            GoRecommend()
+            val intent = Intent(applicationContext, RecommendActivity::class.java)
+            startActivity(intent)
         }
 
         btn_Recommen_N_5th.setOnClickListener{
-            GoRecommend()
+            Q_5th = false
+            val intent = Intent(applicationContext, RecommendActivity::class.java)
+            startActivity(intent)
         }
-    }
-
-    private fun GoRecommend(){      // 여기서 각 문항의 true/false에 따라 식물 추천 페이지로 넘어갈거임!
-
-
-
-        startActivity(Intent(this, RecommendActivity::class.java))
     }
 }

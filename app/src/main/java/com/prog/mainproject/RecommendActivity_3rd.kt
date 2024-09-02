@@ -25,6 +25,7 @@ class RecommendActivity_3rd : AppCompatActivity() {
         }
 
         btn_Recommen_N_3rd.setOnClickListener{
+            Q_3rd = false
             val intent = Intent(applicationContext, RecommendActivity_4th::class.java)
             startActivity(intent)
         }

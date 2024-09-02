@@ -9,21 +9,12 @@ class RecommendActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         if(RecommendActivity_1st.Q_1st == true) {
             setContentView(R.layout.recommend_scindapsus)
         }
         else{
             setContentView(R.layout.activity_recommend)
         }
-
-
-
-
-
-
-
-
 
 
 

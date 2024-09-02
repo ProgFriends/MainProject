@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:layout_width="0dp"
+        android:layout_width="400dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
@@ -48,8 +48,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_gravity="top"
+                android:layout_marginTop="5dp"
                 android:hapticFeedbackEnabled="false"
                 android:orientation="horizontal">
 
@@ -68,13 +68,24 @@
                         android:background="@drawable/light_green_round" />
 
                     <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="물주기"
+                        android:textColor="@color/black" />
+
+                    <TextView
                         android:id="@+id/textView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="물주기"
-                        android:layout_gravity="top|center_horizontal"
+                        android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/black"/>
+                        android:layout_marginBottom="5dp"
+                        android:text="2~3일"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -88,16 +99,27 @@
                         android:layout_height="68dp"
                         android:layout_gravity="top"
                         android:layout_weight="1"
+                        android:layout_marginStart="15dp"
                         android:background="@drawable/light_green_round" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        app:srcCompat="@drawable/sun_half" />
 
                     <TextView
                         android:id="@+id/textView23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="햇빛"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/black"/>
+                        android:layout_marginStart="5dp"
+                        android:text="햇빛"
+                        android:textColor="@color/black" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -118,14 +140,40 @@
                         android:id="@+id/textView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="난이도"
                         android:layout_gravity="top|center_horizontal"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/black"/>
+                        android:text="난이도"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="5dp"
+                        app:srcCompat="@drawable/ic_baseline_star_24" />
 
                 </FrameLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="식물을 처음 길러보는 사람에게 가장 추천해요!"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_radius_16dp"
+                android:text="\n TextView" />
         </LinearLayout>
 
 
