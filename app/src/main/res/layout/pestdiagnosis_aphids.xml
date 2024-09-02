@@ -284,8 +284,7 @@
                     android:layout_marginTop="898dp"
                     android:text="진디제로"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                     />
+                    android:textSize="20dp" />
 
                 <!--추천 제품2-->
                 <ImageView
@@ -304,8 +303,7 @@
                     android:layout_marginTop="898dp"
                     android:text="모두 싹"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    />
+                    android:textSize="20dp" />
 
 
             </FrameLayout>
