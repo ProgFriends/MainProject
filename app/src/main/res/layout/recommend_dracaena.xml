@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +12,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,14 +26,14 @@
                 android:layout_width="175dp"
                 android:layout_height="192dp"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/reco_scindpsus" />
+                app:srcCompat="@drawable/reco_dracaena" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="스킨답서스"
+                android:text="행운목"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scindapsus"
+                android:text="Dracaena fragrans"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -83,7 +83,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="2~3일"
+                        android:text="7일"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -98,8 +98,8 @@
                         android:layout_width="118dp"
                         android:layout_height="68dp"
                         android:layout_gravity="top"
-                        android:layout_weight="1"
                         android:layout_marginStart="15dp"
+                        android:layout_weight="1"
                         android:background="@drawable/light_green_round" />
 
                     <ImageView
@@ -107,9 +107,9 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
                         app:srcCompat="@drawable/sun_half" />
 
                     <TextView
@@ -117,8 +117,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center_horizontal"
-                        android:layout_marginTop="5dp"
                         android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:text="햇빛"
                         android:textColor="@color/black" />
                 </FrameLayout>
@@ -146,13 +146,30 @@
                         android:text="난이도"
                         android:textColor="@color/black" />
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginBottom="5dp"
-                        app:srcCompat="@drawable/ic_baseline_star_24" />
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            app:srcCompat="@drawable/ic_baseline_star_24" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_baseline_star_24" />
+                    </LinearLayout>
 
                 </FrameLayout>
 
@@ -164,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="식물을 처음 길러보는 사람에게 가장 추천해요!"
+                android:text="공기정화와 습도조절 효과를 원한다면\n 행운목을 추천해요!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -175,7 +192,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
-                android:text="• 화분 위에서 3~5cm 정도 높이의 흙이 보송하게 마른 것을 확인한 후 물을 주세요. \n"
+                android:text="• 수경재배를 할 때는 접시의 물을 자주 갈아주고, 줄기가 1cm 이상 잠기지 않도록 해주세요.
+                \n • 흙의 겉표면이 마르면 흙 전체가 촉촉해지도록 물을 주세요. \n"
                 android:textColor="@color/black" />
         </LinearLayout>
 

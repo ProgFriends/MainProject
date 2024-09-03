@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,14 +25,14 @@
                 android:layout_width="175dp"
                 android:layout_height="192dp"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/reco_scindpsus" />
+                app:srcCompat="@drawable/reco_alocasia" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="스킨답서스"
+                android:text="알로카시아"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -41,7 +40,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scindapsus"
+                android:text="Alocasia"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -83,7 +82,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="2~3일"
+                        android:text="4~5일"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -107,10 +106,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        app:srcCompat="@drawable/sun_half" />
+                        app:srcCompat="@drawable/sun_full" />
 
                     <TextView
                         android:id="@+id/textView23"
@@ -146,13 +145,30 @@
                         android:text="난이도"
                         android:textColor="@color/black" />
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginBottom="5dp"
-                        app:srcCompat="@drawable/ic_baseline_star_24" />
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            app:srcCompat="@drawable/ic_baseline_star_24" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_baseline_star_24" />
+                    </LinearLayout>
 
                 </FrameLayout>
 
@@ -164,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="식물을 처음 길러보는 사람에게 가장 추천해요!"
+                android:text="이국적인 인테리어용 식물을 키우고 싶다면\n 알로카시아를 추천해요!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -175,7 +191,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
-                android:text="• 화분 위에서 3~5cm 정도 높이의 흙이 보송하게 마른 것을 확인한 후 물을 주세요. \n"
+                android:text="• 봄, 여름엔 겉 흙이 말랐을 때, 가을 겨울에는 겉 흙이 마르고 1~3일 후에 물주기를 하는게 적절해요.
+                \n • 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요. \n"
                 android:textColor="@color/black" />
         </LinearLayout>
 

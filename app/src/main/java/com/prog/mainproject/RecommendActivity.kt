@@ -9,11 +9,49 @@ class RecommendActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(RecommendActivity_1st.Q_1st == true) {
-            setContentView(R.layout.recommend_scindapsus)
-        }
-        else{
-            setContentView(R.layout.activity_recommend)
+
+        when{
+            // scindapsus
+            RecommendActivity_2nd.Q_2nd_Planterior && RecommendActivity_5th.Q_5th -> {
+                setContentView(R.layout.recommend_scindapsus)
+            }
+
+            // hoya
+            RecommendActivity_2nd.Q_2nd_AirPurify && RecommendActivity_4th.Q_4th && RecommendActivity_5th.Q_5th -> {
+                setContentView(R.layout.recommend_hoya)
+            }
+
+            // alocasia
+            RecommendActivity_2nd.Q_2nd_AirPurify && RecommendActivity_3rd.Q_3rd && RecommendActivity_4th.Q_4th -> {
+                setContentView(R.layout.recommend_alocasia)
+            }
+
+            // dracaena
+            RecommendActivity_2nd.Q_2nd_AirPurify && RecommendActivity_3rd.Q_3rd && RecommendActivity_5th.Q_5th -> {
+                setContentView(R.layout.recommend_dracaena)
+            }
+
+            // monstera
+            RecommendActivity_1st.Q_1st && RecommendActivity_2nd.Q_2nd_Planterior &&
+                    RecommendActivity_3rd.Q_3rd && RecommendActivity_4th.Q_4th && RecommendActivity_5th.Q_5th -> {
+                        setContentView(R.layout.recommend_monstera)
+            }
+
+            // 떡갈고무나무
+            RecommendActivity_1st.Q_1st && RecommendActivity_2nd.Q_2nd_AirPurify &&
+                    RecommendActivity_3rd.Q_3rd && RecommendActivity_4th.Q_4th -> {
+
+                    }
+
+            // 박쥐란
+            RecommendActivity_2nd.Q_2nd_Planterior && RecommendActivity_4th.Q_4th && RecommendActivity_5th.Q_5th -> {
+
+            }
+
+            // ivy
+            RecommendActivity_2nd.Q_2nd_AirPurify && RecommendActivity_5th.Q_5th -> {
+
+            }
         }
 
 
