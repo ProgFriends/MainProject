@@ -192,8 +192,13 @@
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
                 android:text="• 봄, 여름엔 겉 흙이 말랐을 때, 가을 겨울에는 겉 흙이 마르고 1~3일 후에 물주기를 하는게 적절해요.
-                \n • 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요. \n"
-                android:textColor="@color/black" />
+                \n• 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요.
+                \n• 알로카시아는 열대지방 식물이에요. 겨울철엔 얼어붙지 않도록 따뜻한 집 안에서 키워줘야 해요.
+                \n• 해가 잘 드는 곳에서 키워주세요.
+                \n• 높이가 1m 넘게 자라기도 해서 충분한 공간이 필요해요.
+                \n• 알로카시아의 종에 따라, 잎에 맺히는 물에 독성이 있기도 해서 어린아이나 반려동물과 함께 살고 있다면 주의가 필요해요."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
 

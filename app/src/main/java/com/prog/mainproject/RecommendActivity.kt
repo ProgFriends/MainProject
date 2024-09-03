@@ -37,26 +37,22 @@ class RecommendActivity : AppCompatActivity() {
                         setContentView(R.layout.recommend_monstera)
             }
 
-            // 떡갈고무나무
+            // oak
             RecommendActivity_1st.Q_1st && RecommendActivity_2nd.Q_2nd_AirPurify &&
                     RecommendActivity_3rd.Q_3rd && RecommendActivity_4th.Q_4th -> {
-
+                        setContentView(R.layout.recommend_oak)
                     }
 
-            // 박쥐란
+            // staghorn
             RecommendActivity_2nd.Q_2nd_Planterior && RecommendActivity_4th.Q_4th && RecommendActivity_5th.Q_5th -> {
-
+                setContentView(R.layout.recommend_staghorn)
             }
 
             // ivy
             RecommendActivity_2nd.Q_2nd_AirPurify && RecommendActivity_5th.Q_5th -> {
-
+                setContentView(R.layout.recommend_ivy)
             }
         }
-
-
-
-
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

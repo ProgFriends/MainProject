@@ -171,12 +171,18 @@
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
-                android:text="• 화분 위에서 3~5cm 정도 높이의 흙이 보송하게 마른 것을 확인한 후 물을 주세요. \n"
-                android:textColor="@color/black" />
+                android:text="• 화분 위에서 3~5cm 정도 높이의 흙이 보송하게 마른 것을 확인한 후 물을 주세요.
+                \n• 해가 잘 들지 않는 곳에서도 잘 자라요.
+                \n• 날씨나 계절, 온도에 크게 구애받지 않아요.
+                \n• 식물의 크기가 작아서 좁은 원룸에서도 키울 수 있어요.
+                \n• 공중에 걸어 기르거나 기둥이나 벽을 타고 오르게끔 길러서 플랜테리어에도 좋아요.
+                \n• 일산화탄소, 미세먼지 제거 등 공기정화에 탁월해요."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
 

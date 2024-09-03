@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="천천히 느린 속도로 자라는 식물을 원한다면\n 호야를 추천해요!"
+                android:text="인피니트 호야가 아니에요!\n 호야는 식물이에요!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -174,8 +174,14 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
-                android:text="• 호야의 원산지는 상당히 건조한 지역입니다. 흙 표면이 완전히 말랐을 때 물을 주세요. \n"
-                android:textColor="@color/black" />
+                android:text="• 호야의 원산지는 상당히 건조한 지역이에요. 흙 표면이 완전히 말랐을 때 물을 주세요.
+                \n• 해가 잘 드는 곳에서 키워주세요.
+                \n• 식물의 크기가 작아서 좁은 공간에서도 키울 수 있어요.
+                \n• 서늘한 온도에서 잘 자라요. 겨울철 강한 난방은 호야의 성장을 더디게 할 수 있으니 베란다에서 키우는 것을 추천해요.
+                \n• 봄이면 작고 귀여운 별 모양의 꽃이 펴요.
+                \n• 공기정화에 아주 탁월한 친구에요."
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
         </LinearLayout>
 
 

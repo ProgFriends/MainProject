@@ -193,8 +193,12 @@
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
                 android:text="• 수경재배를 할 때는 접시의 물을 자주 갈아주고, 줄기가 1cm 이상 잠기지 않도록 해주세요.
-                \n • 흙의 겉표면이 마르면 흙 전체가 촉촉해지도록 물을 주세요. \n"
-                android:textColor="@color/black" />
+                \n• 흙의 겉표면이 마르면 흙 전체가 촉촉해지도록 물을 주세요.
+                \n• 해가 잘 들지 않아도 잘 자라요.
+                \n• 높이가 1m 넘게 자라기도 해서 충분한 공간이 필요해요.
+                \n• 공기정화 능력이 뛰어나고, 겨울철 천연 가습기 역할을 해요. 잎이 크고 먼지가 잘 붙으니 잎을 자주 닦아주어야 해요."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
 
