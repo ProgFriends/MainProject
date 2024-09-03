@@ -10,6 +10,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
@@ -153,6 +154,7 @@ class CalenderAddActivity : AppCompatActivity() {
                                     CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
                                     CalendarActivity.scheduleRecyclerViewAdapter.notifyDataSetChanged()
                                 }
+                                finish()
                             } else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                             }
@@ -165,7 +167,7 @@ class CalenderAddActivity : AppCompatActivity() {
                     }
                 )
                 LoginActivity.queue.add(CalendarRegiRequest)
-                finish()
+                //finish()
             }
         }
 
@@ -329,8 +331,16 @@ class CalenderAddActivity : AppCompatActivity() {
             // Decode the input stream into a bitmap
             val originalBitmap = BitmapFactory.decodeStream(inputStream)
 
+            // Create a matrix for the manipulation
+            val matrix = Matrix()
+            // Rotate the bitmap 90 degrees clockwise
+            matrix.postRotate(90f)
+
+            // Create a new bitmap from the original using the matrix to transform the result
+            val rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, true)
+
             // Resize the bitmap to 400x400
-            val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 400, 400, true)
+            val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, 400, 400, true)
 
             // Convert the resized bitmap to a byte array
             val buffer = ByteArrayOutputStream()

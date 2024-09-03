@@ -26,30 +26,30 @@
                 android:layout_width="175dp"
                 android:layout_height="192dp"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/reco_scindpsus" />
+                app:srcCompat="@drawable/reco_ficus" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="스킨답서스"
+                android:text="떡갈고무나무"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scindapsus"
+                android:text="Ficus pandurata Sander"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:hapticFeedbackEnabled="false"
                 android:orientation="horizontal">
 
@@ -83,7 +83,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="2~3일"
+                        android:text="10~14일"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -109,8 +109,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        app:srcCompat="@drawable/sun_half" />
+                        app:srcCompat="@drawable/sun_full" />
 
                     <TextView
                         android:id="@+id/textView23"
@@ -164,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="식물을 처음 길러보는 사람에게 가장 추천해요!"
+                android:text="멋진 식물입니다!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -174,9 +173,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_radius_16dp"
-                android:padding="10dp"
-                android:text="• 화분 위에서 3~5cm 정도 높이의 흙이 보송하게 마른 것을 확인한 후 물을 주세요. \n"
-                android:textColor="@color/black" />
+                android:text="\n TextView" />
         </LinearLayout>
 
 
