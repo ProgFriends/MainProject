@@ -50,6 +50,7 @@ class CalenderAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calender_add)
 
+
         // 날짜 세팅
         if(intent.getStringExtra("currentDate") != null) {
             recordDate = intent.getStringExtra("currentDate").toString()
@@ -146,14 +147,16 @@ class CalenderAddActivity : AppCompatActivity() {
 
                             if (success) {
                                 Toast.makeText(applicationContext, "기록을 완료했습니다.", Toast.LENGTH_SHORT).show()
+                                /*
                                 if (CalenderDetailActivity.adapter != null) {
                                     CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
                                     CalenderDetailActivity.adapter.notifyDataSetChanged()
                                 }
                                 if (CalendarActivity.scheduleRecyclerViewAdapter != null) {
-                                    CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
+                                     CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
                                     CalendarActivity.scheduleRecyclerViewAdapter.notifyDataSetChanged()
                                 }
+                                 */
                                 finish()
                             } else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
@@ -334,7 +337,7 @@ class CalenderAddActivity : AppCompatActivity() {
             // Create a matrix for the manipulation
             val matrix = Matrix()
             // Rotate the bitmap 90 degrees clockwise
-            matrix.postRotate(90f)
+            // matrix.postRotate(90f)
 
             // Create a new bitmap from the original using the matrix to transform the result
             val rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, true)

@@ -1,5 +1,6 @@
 package com.prog.mainproject
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
@@ -21,7 +23,7 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), PlantListAdapter.OnPlantListChanged {
 
     companion object {
         lateinit var adapter: PlantListAdapter
@@ -34,18 +36,21 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    lateinit var img_YourPlant: ImageView
+    lateinit var btn_Recommend: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
-        adapter = PlantListAdapter()
+        adapter = PlantListAdapter(this)
 
         // 리사이클러뷰에 레이아웃 매니저 설정
         val layoutManager = LinearLayoutManager(this)
         val recyclerView = findViewById<RecyclerView>(R.id.RCV_PlantList)
         val btn_AddPlant = findViewById<ImageButton>(R.id.Btn_AddPlant)
-        val img_YourPlant = findViewById<ImageView>(R.id.image_YourpPant)
-        val btn_Recommend = findViewById<Button>(R.id.Btn_Recommend)
+        img_YourPlant = findViewById<ImageView>(R.id.image_YourpPant)
+        btn_Recommend = findViewById<Button>(R.id.Btn_Recommend)
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
@@ -102,10 +107,10 @@ class HomeActivity : AppCompatActivity() {
         val queue: RequestQueue = LoginActivity.queue
         queue.add(plnatlistRequest)
 
-
-        btn_AddPlant.setOnClickListener{
-            val intent = Intent(applicationContext, RegisterInformationActivityActivity::class.java)
-            startActivity(intent)
+        // 등록 버튼 클릭시 RegisterInformationActivityActivity로 이동
+        btn_AddPlant.setOnClickListener {
+            val intent = Intent(this, RegisterInformationActivityActivity::class.java)
+            registerActivityLauncher.launch(intent)
         }
 
         btn_Recommend.setOnClickListener{
@@ -159,5 +164,21 @@ class HomeActivity : AppCompatActivity() {
         override fun getParams(): Map<String, String> {
             return map
         }
+    }
+
+    // ActivityResultLauncher를 정의하여 결과를 받음
+    private val registerActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // 식물 등록 성공시
+            img_YourPlant.visibility = View.INVISIBLE
+            btn_Recommend.visibility = View.INVISIBLE
+        }
+    }
+
+    // 인터페이스 메서드 구현
+    override fun onPlantListEmpty() {
+        img_YourPlant.visibility = View.VISIBLE  // 리스트가 비었을 때 이미지 표시
+        btn_Recommend.visibility = View.VISIBLE
     }
 }

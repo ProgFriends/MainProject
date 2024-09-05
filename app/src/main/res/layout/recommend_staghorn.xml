@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="잎이 길쭉해요!"
+                android:text="사슴뿔 같은 잎이 신기하지 않은가요?\n플랜테리어에 유용한 박쥐란을 추천해요!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -176,8 +176,12 @@
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
                 android:text="• 봄, 여름엔 겉 흙이 말랐을 때, 가을 겨울에는 겉 흙이 마르고 1~3일 후에 물주기를 하는게 적절해요.
-                \n • 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요. \n"
-                android:textColor="@color/black" />
+                \n• 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요.
+                \n• 해가 잘 들지 않아도 잘 자라요.
+                \n• 식물의 크기가 작아서 좁은 공간에서도 키울 수 있어요.
+                \n• 공중에 걸어 기르면 플랜테리어 효과도 있어요."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
 

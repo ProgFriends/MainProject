@@ -56,10 +56,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
         android:layout_marginTop="50dp"
         android:text="식물 종"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Spinner_plantSpecies"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
@@ -77,10 +76,9 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
         android:layout_marginTop="30dp"
         android:text="애칭"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editText_plantName"
         app:layout_constraintTop_toBottomOf="@+id/Spinner_plantSpecies" />
 
     <EditText
@@ -99,10 +97,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
         android:layout_marginTop="30dp"
         android:text="키우기 시작한 날"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/TV_bringDate"
         app:layout_constraintTop_toBottomOf="@+id/editText_plantName" />
 
     <TextView

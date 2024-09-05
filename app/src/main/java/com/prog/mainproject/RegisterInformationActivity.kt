@@ -1,5 +1,6 @@
 package com.prog.mainproject
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentResolver
 import android.content.Context
@@ -145,6 +146,8 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, "식물을 성공적으로 등록했습니다.", Toast.LENGTH_SHORT).show()
                                 HomeActivity.adapter.plantList.add(PlantListClass(plantSpecies!!, plantName, plantImageBytes, bringDateObj))
                                 HomeActivity.adapter.notifyDataSetChanged() // 어댑터에게 데이터 변경을 알림
+                                val resultIntent = Intent()
+                                setResult(Activity.RESULT_OK, resultIntent)
                                 finish()
                             }
                             else {

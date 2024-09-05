@@ -25,7 +25,11 @@ data class PlantListClass(
     var BringDate: Date,
 )
 
-class PlantListAdapter: RecyclerView.Adapter<PlantListAdapter.ViewHolder>() {
+class PlantListAdapter(private val onPlantListChanged: OnPlantListChanged): RecyclerView.Adapter<PlantListAdapter.ViewHolder>() {
+
+    interface OnPlantListChanged {
+        fun onPlantListEmpty()  // 리스트가 비었을 때 호출
+    }
 
     var plantList = ArrayList<PlantListClass>()
 
@@ -70,6 +74,11 @@ class PlantListAdapter: RecyclerView.Adapter<PlantListAdapter.ViewHolder>() {
                                     plantList.removeAt(position)        // plantList에서 position 위치의 값을 지움
                                     notifyItemRemoved(position)         // RecyclerView에 변경사항을 알림
                                     Toast.makeText(this.itemView.context, message, Toast.LENGTH_SHORT).show()
+
+                                    // plantList의 크기가 0이면 인터페이스 메서드 호출
+                                    if (plantList.size == 0) {
+                                        onPlantListChanged.onPlantListEmpty()  // 리스트가 비었음을 알림
+                                    }
                                 }
                             }
                             else {

@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="멋진 식물입니다!"
+                android:text="공기정화 식물을 원한다면\n떡갈고무나무를 추천해요!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -193,8 +193,14 @@
                 android:background="@drawable/background_radius_16dp"
                 android:padding="10dp"
                 android:text="• 봄, 여름엔 겉 흙이 말랐을 때, 가을 겨울에는 겉 흙이 마르고 1~3일 후에 물주기를 하는게 적절해요.
-                \n • 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요. \n"
-                android:textColor="@color/black" />
+                \n• 잎이 말라보일 때는 흙에 물을 주는 것이 아니라, 분무기로 잎에 물을 뿌려 주세요.
+                \n• 해가 잘 드는 곳에서 키워주세요.
+                \n• 잎이 매우 크고 무겁게 자라기 때문에 신경써서 지지대를 세워주세요.
+                \n• 떡갈고무나무는 매우 크게 자라요. 충분한 공간이 마련된 상황에서 키우는 것을 추천해요.
+                \n• 공기정화에 아주 탁월한 친구에요. 잎에 먼지가 잘 붙으니 잎을 자주 닦아주어야 해요.
+                \n• 떡갈고무나무의 나무 진액에는 독성이 있어요. 어린아이나 반려동물과 함께 살고 있다면 주의가 필요해요."
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
         </LinearLayout>
 
 

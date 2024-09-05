@@ -224,12 +224,6 @@ class PestActivity : AppCompatActivity() {
         startDiagnosisActivity(originalPredictedLabel)
     }
 
-    private fun rotateBitmap(source: Bitmap, angle: Float): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(angle)
-        return ThumbnailUtils.extractThumbnail(Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true), 1080, 1080)
-    }
-
     private fun getInputImage(pixels: IntArray, cx: Int, cy: Int): ByteBuffer {
         val inputImg = ByteBuffer.allocateDirect(cx * cy * 3 * 4)
         inputImg.order(ByteOrder.nativeOrder())
