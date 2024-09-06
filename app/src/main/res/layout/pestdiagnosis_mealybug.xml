@@ -32,7 +32,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/goCalender"
         app:layout_constraintEnd_toEndOf="parent"
@@ -282,8 +282,7 @@
                     android:layout_marginTop="898dp"
                     android:text="깍지제로"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    />
+                    android:textSize="20dp" />
 
                 <!--추천 제품2-->
                 <ImageView
@@ -302,8 +301,7 @@
                     android:layout_marginTop="898dp"
                     android:text="바로킬"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    />
+                    android:textSize="20dp" />
             </FrameLayout>
         </LinearLayout>
     </ScrollView>
