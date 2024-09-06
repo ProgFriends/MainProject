@@ -268,17 +268,20 @@ class PestActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             "sootymold" -> {
-                val intent = Intent(this, PestSootyMold::class.java)
+                // val intent = Intent(this, PestSootyMold::class.java)
+                val intent = Intent(this, PestEarlyblight::class.java)
                 intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "mite" -> {
-                val intent = Intent(this, PestMite::class.java)
+                // val intent = Intent(this, PestMite::class.java)
+                val intent = Intent(this, PestConfusePowderyMealy::class.java)
                 intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
             "aphids" -> {
-                val intent = Intent(this, PestAphids::class.java)
+                // val intent = Intent(this, PestAphids::class.java)
+                val intent = Intent(this, PestConfusePowderyMealy::class.java)
                 intent.putExtra("byteArrayExtra", byteArray)
                 startActivity(intent)
             }
