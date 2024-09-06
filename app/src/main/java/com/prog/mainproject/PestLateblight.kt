@@ -22,7 +22,7 @@ class PestLateblight : AppCompatActivity() {
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
             finish()
-            val intent = Intent(this@PestLateblight, CalenderAddActivity::class.java)
+            val intent = Intent(this@PestLateblight, CalenderPestAddActivity::class.java)
             startActivity(intent)
         }
     }

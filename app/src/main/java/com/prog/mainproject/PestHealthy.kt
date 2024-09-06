@@ -26,7 +26,7 @@ class PestHealthy : AppCompatActivity() {
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
             finish()
-            val intent = Intent(this@PestHealthy, CalenderAddActivity::class.java)
+            val intent = Intent(this@PestHealthy, CalenderPestAddActivity::class.java)
             val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             intent.putExtra("byteArrayExtra", receivedByteArray)
             intent.putExtra("currentDate", currentDate)

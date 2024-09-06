@@ -27,7 +27,7 @@ class PestPowdery : AppCompatActivity() {
         val registerButton = findViewById<Button>(R.id.goCalender)
         registerButton.setOnClickListener{
             finish()
-            val intent = Intent(this@PestPowdery, CalenderAddActivity::class.java)
+            val intent = Intent(this@PestPowdery, CalenderPestAddActivity::class.java)
             val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
             intent.putExtra("byteArrayExtra", receivedByteArray)
             intent.putExtra("currentDate", currentDate)

@@ -31,7 +31,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class CalenderAddActivity : AppCompatActivity() {
+class CalenderPestAddActivity : AppCompatActivity() {
 
     private lateinit var ImgV_calendarImage: ImageView
     private lateinit var spinner_nicknameSpecies : Spinner
@@ -48,7 +48,7 @@ class CalenderAddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.calender_add)
+        setContentView(R.layout.calender_pest_add)
 
 
         // 날짜 세팅
@@ -147,6 +147,7 @@ class CalenderAddActivity : AppCompatActivity() {
 
                             if (success) {
                                 Toast.makeText(applicationContext, "기록을 완료했습니다.", Toast.LENGTH_SHORT).show()
+                                /*
                                 if (CalenderDetailActivity.adapter != null) {
                                     CalenderDetailActivity.adapter.calendarDayList.add(CalendarListClass(plantSpecies!!, plantName, plantImageBytes, recordDate, pestInfo, memo))
                                     CalenderDetailActivity.adapter.notifyDataSetChanged()
@@ -155,6 +156,7 @@ class CalenderAddActivity : AppCompatActivity() {
                                      CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
                                     CalendarActivity.scheduleRecyclerViewAdapter.notifyDataSetChanged()
                                 }
+                                 */
                                 finish()
                             } else {
                                 Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
@@ -187,25 +189,25 @@ class CalenderAddActivity : AppCompatActivity() {
                 R.id.page_home -> {
                     // 홈 아이템 클릭 시 홈 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderAddActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@CalenderPestAddActivity, HomeActivity::class.java))
                     true
                 }
                 R.id.page_fv -> {
                     // 질병진단 아이템 클릭 시 질병진단 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderAddActivity, PestActivity::class.java))
+                    startActivity(Intent(this@CalenderPestAddActivity, PestActivity::class.java))
                     true
                 }
                 R.id.page_ps -> {
                     // 식물 기록 아이템 클릭 시 캘린더 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderAddActivity, CalendarActivity::class.java))
+                    startActivity(Intent(this@CalenderPestAddActivity, CalendarActivity::class.java))
                     true
                 }
                 R.id.page_show -> {
                     // 식물 보기 아이템 클릭 시 캘린더 화면으로 이동
                     finish()
-                    startActivity(Intent(this@CalenderAddActivity, WebCamActivity::class.java))
+                    startActivity(Intent(this@CalenderPestAddActivity, WebCamActivity::class.java))
                     true
                 }
                 else -> false
