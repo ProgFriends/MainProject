@@ -45,6 +45,8 @@ class CalenderAddActivity : AppCompatActivity() {
     private var recordDate: String = ""
     private var plantImageBytes: ByteArray = byteArrayOf()
 
+    private var Capture: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,11 +86,13 @@ class CalenderAddActivity : AppCompatActivity() {
 
         // 이미지 뷰 클릭 시, 갤러리에서 사진을 선택하고 이미지 뷰를 해당 사진으로 대체
         ImgV_calendarImage.setOnClickListener{
+            Capture = false
             openGallery()
         }
 
         // 카메라 등록 클릭 시, 카메라 열기
         registerCamera.setOnClickListener {
+            Capture = true
             openCamera()
         }
 
@@ -308,6 +312,39 @@ class CalenderAddActivity : AppCompatActivity() {
         }
     }
 
+/*
+    private val takePictureLauncher: ActivityResultLauncher<Uri> = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            Capture = true
+            imageUri?.let {
+                ImgV_calendarImage.setImageURI(it)
+
+                // Uri로부터 Bitmap 가져오기
+                try {
+                    val inputStream = contentResolver.openInputStream(it)
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+
+                    // Bitmap을 90도 회전
+                    val matrix = Matrix()
+                    //matrix.postRotate(90f)
+                    val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+
+                    // 회전된 Bitmap을 ByteArray로 변환
+                    val byteArrayOutputStream = ByteArrayOutputStream()
+                    rotatedBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                    plantImageBytes = byteArrayOutputStream.toByteArray()
+                    Log.d("Cal Add ImageCapture: ", "success")
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    plantImageBytes = byteArrayOf() // 실패 시 빈 배열로 처리
+                }
+            }
+        }
+    }
+ */
+
+
     private fun openCamera() {
         imageUri = createImageUri() // 이미지 URI 생성
         imageUri?.let {
@@ -335,7 +372,9 @@ class CalenderAddActivity : AppCompatActivity() {
             // Create a matrix for the manipulation
             val matrix = Matrix()
             // Rotate the bitmap 90 degrees clockwise
-            // matrix.postRotate(90f)
+            if(Capture){
+                matrix.postRotate(90f)
+            }
 
             // Create a new bitmap from the original using the matrix to transform the result
             val rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, true)

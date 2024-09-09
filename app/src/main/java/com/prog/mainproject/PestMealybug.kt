@@ -7,11 +7,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PestMealybug : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pestdiagnosis_mealybug)
+
+        val receivedByteArray = intent.getByteArrayExtra("byteArrayExtra")
 
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
@@ -24,6 +28,10 @@ class PestMealybug : AppCompatActivity() {
         registerButton.setOnClickListener{
             finish()
             val intent = Intent(this@PestMealybug, CalenderPestAddActivity::class.java)
+            val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            intent.putExtra("byteArrayExtra", receivedByteArray)
+            intent.putExtra("currentDate", currentDate)
+            intent.putExtra("pestInfo", "흰솜깍지벌레")
             startActivity(intent)
         }
 

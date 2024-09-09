@@ -12,6 +12,8 @@ class PestConfusePowderyMealy : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pestdiagnosis_confuse_powdery_mealy)
 
+        val receivedByteArray = intent.getByteArrayExtra("byteArrayExtra")
+
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         backIcon.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -23,6 +25,7 @@ class PestConfusePowderyMealy : AppCompatActivity() {
         goMealy.setOnClickListener{
             finish()
             val intent = Intent(this@PestConfusePowderyMealy, PestMealybug::class.java)
+            intent.putExtra("byteArrayExtra", receivedByteArray)
             startActivity(intent)
         }
 
@@ -30,6 +33,7 @@ class PestConfusePowderyMealy : AppCompatActivity() {
         goPowder.setOnClickListener{
             finish()
             val intent = Intent(this@PestConfusePowderyMealy, PestPowdery::class.java)
+            intent.putExtra("byteArrayExtra", receivedByteArray)
             startActivity(intent)
         }
     }

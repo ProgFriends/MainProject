@@ -124,10 +124,14 @@ class PestActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
             // 이미지 캡처 성공 처리
             val bp = data?.extras?.get("data") as Bitmap
-            // val rotatedBitmap = rotateBitmap(bp, 90f)
+
+            val matrix = Matrix()
+            matrix.postRotate(90f)
+            val rotatedBitmap = Bitmap.createBitmap(bp, 0, 0, bp.width, bp.height, matrix, true)
+
             val cx = 200
             val cy = 200
-            val resizedBitmap = Bitmap.createScaledBitmap(bp, cx, cy, false)
+            val resizedBitmap = Bitmap.createScaledBitmap(rotatedBitmap, cx, cy, false)
             val pixels = IntArray(cx * cy)
             resizedBitmap.getPixels(pixels, 0, cx, 0, 0, cx, cy)
             val inputImg = getInputImage(pixels, cx, cy)
@@ -138,7 +142,7 @@ class PestActivity : AppCompatActivity() {
             val originalPredictedLabel = getPredictedClassLabel(originalPred[0])
             Log.d("PestActivity", "Predicted Label: $originalPredictedLabel")
 
-            byteArray = bitmapToByteArray(bp)
+            byteArray = bitmapToByteArray(rotatedBitmap)
 
             startDiagnosisActivity(originalPredictedLabel)
         }

@@ -310,7 +310,7 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         // Create a matrix for the manipulation
         val matrix = Matrix()
         // Rotate the bitmap 90 degrees clockwise
-        matrix.postRotate(90f)
+        //matrix.postRotate(90f)
 
         // Create a new bitmap from the original using the matrix to transform the result
         val rotatedBitmap = Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
