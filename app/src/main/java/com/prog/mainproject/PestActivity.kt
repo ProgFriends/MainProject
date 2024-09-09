@@ -156,8 +156,13 @@ class PestActivity : AppCompatActivity() {
             // 선택한 이미지 URI를 이용하여 해당 이미지를 비트맵으로 가져온다.
             val selectedBitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
 
+            val matrix = Matrix()
+            matrix.postRotate(90f)
+            val rotatedBitmap = Bitmap.createBitmap(selectedBitmap, 0, 0, selectedBitmap.width, selectedBitmap.height, matrix, true)
+
+
             // 선택한 이미지에 대해 진단 수행
-            performDiagnosis(selectedBitmap)
+            performDiagnosis(rotatedBitmap)
         } else if (resultCode == Activity.RESULT_CANCELED) {
             //Toast.makeText(this, "Gallery selection cancelled", Toast.LENGTH_LONG).show()
         }
