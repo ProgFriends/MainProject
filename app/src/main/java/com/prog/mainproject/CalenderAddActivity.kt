@@ -312,39 +312,6 @@ class CalenderAddActivity : AppCompatActivity() {
         }
     }
 
-/*
-    private val takePictureLauncher: ActivityResultLauncher<Uri> = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-        if (success) {
-            Capture = true
-            imageUri?.let {
-                ImgV_calendarImage.setImageURI(it)
-
-                // Uri로부터 Bitmap 가져오기
-                try {
-                    val inputStream = contentResolver.openInputStream(it)
-                    val bitmap = BitmapFactory.decodeStream(inputStream)
-
-                    // Bitmap을 90도 회전
-                    val matrix = Matrix()
-                    //matrix.postRotate(90f)
-                    val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-
-                    // 회전된 Bitmap을 ByteArray로 변환
-                    val byteArrayOutputStream = ByteArrayOutputStream()
-                    rotatedBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-                    plantImageBytes = byteArrayOutputStream.toByteArray()
-                    Log.d("Cal Add ImageCapture: ", "success")
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    plantImageBytes = byteArrayOf() // 실패 시 빈 배열로 처리
-                }
-            }
-        }
-    }
- */
-
-
     private fun openCamera() {
         imageUri = createImageUri() // 이미지 URI 생성
         imageUri?.let {

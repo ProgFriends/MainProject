@@ -3,6 +3,7 @@ package com.prog.mainproject
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentResolver
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -49,6 +50,8 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
     private var bringDate: String = ""
     private var plantImageBytes: ByteArray = byteArrayOf()
 
+    private var Capture: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_information)
@@ -65,10 +68,18 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         var edit_plantname = findViewById<EditText>(R.id.editText_plantName)
         var tv_bringDate = findViewById<TextView>(R.id.TV_bringDate)
         var btn_regiplant = findViewById<Button>(R.id.Btn_RegiPlant)
+        val registerCamera = findViewById<TextView>(R.id.textView)
 
         // 이미지 뷰 클릭 시, 갤러리에서 사진을 선택하고 이미지 뷰를 해당 사진으로 대체
         ImgV_plantImage.setOnClickListener{
+            Capture = false
             openGallery()
+        }
+
+        // 카메라 등록 클릭 시, 카메라 열기
+        registerCamera.setOnClickListener {
+            Capture = true
+            openCamera()
         }
 
         // 식물 종 입력 (spinner 어댑터)
@@ -267,6 +278,32 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         pickImageLauncher.launch(gallery)
     }
 
+    private fun openCamera() {
+        imageUri = createImageUri() // 이미지 URI 생성
+        imageUri?.let {
+            takePictureLauncher.launch(it)
+        }
+    }
+
+    private fun createImageUri(): Uri? {
+        val contentResolver = contentResolver
+        val contentValues = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "new_image.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+        }
+        return contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+    }
+
+    private val takePictureLauncher: ActivityResultLauncher<Uri> = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            imageUri?.let {
+                ImgV_plantImage.setImageURI(it)
+                // 나중에 사용할 이미지 byteArray 저장
+                plantImageBytes = getByteArrayFromUri(this, it) ?: byteArrayOf()
+            }
+        }
+    }
+
     // 문자열을 Date 객체로 변환하는 함수
     private fun stringToDate(dateString: String, format: String): Date {
         val formatter = SimpleDateFormat(format)
@@ -310,7 +347,10 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
         // Create a matrix for the manipulation
         val matrix = Matrix()
         // Rotate the bitmap 90 degrees clockwise
-        //matrix.postRotate(90f)
+        if(Capture){
+            matrix.postRotate(90f)
+        }
+
 
         // Create a new bitmap from the original using the matrix to transform the result
         val rotatedBitmap = Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
