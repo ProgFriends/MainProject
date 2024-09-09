@@ -156,7 +156,7 @@ class CalenderAddActivity : AppCompatActivity() {
                                     CalenderDetailActivity.adapter.notifyDataSetChanged()
                                 }
                                 if (CalendarActivity.scheduleRecyclerViewAdapter != null) {
-                                     CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
+                                    CalendarActivity.scheduleRecyclerViewAdapter.CalendarMonthList.add(CalendarMonthClass(plantSpecies!!, plantName, recordDate, pestInfo))
                                     CalendarActivity.scheduleRecyclerViewAdapter.notifyDataSetChanged()
                                 }
                                 finish()
@@ -339,9 +339,11 @@ class CalenderAddActivity : AppCompatActivity() {
             // Create a matrix for the manipulation
             val matrix = Matrix()
             // Rotate the bitmap 90 degrees clockwise
+            /*
             if(Capture){
                 matrix.postRotate(90f)
             }
+             */
 
             // Create a new bitmap from the original using the matrix to transform the result
             val rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, true)
