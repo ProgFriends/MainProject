@@ -339,11 +339,10 @@ class CalenderAddActivity : AppCompatActivity() {
             // Create a matrix for the manipulation
             val matrix = Matrix()
             // Rotate the bitmap 90 degrees clockwise
-            /*
-            if(Capture){
+
+            if(!Capture){
                 matrix.postRotate(90f)
             }
-             */
 
             // Create a new bitmap from the original using the matrix to transform the result
             val rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, true)
