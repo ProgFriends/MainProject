@@ -8,6 +8,7 @@ import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -306,6 +307,16 @@ class RegisterInformationActivityActivity : AppCompatActivity() {
             width = (maxLength * aspectRatio).toInt()
         }
 
-        return Bitmap.createScaledBitmap(source, width, height, true)
+        // Create a matrix for the manipulation
+        val matrix = Matrix()
+        // Rotate the bitmap 90 degrees clockwise
+        matrix.postRotate(90f)
+
+        // Create a new bitmap from the original using the matrix to transform the result
+        val rotatedBitmap = Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
+
+        return Bitmap.createScaledBitmap(rotatedBitmap, width, height, true)
+
+
     }
 }
