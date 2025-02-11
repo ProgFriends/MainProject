@@ -96,68 +96,44 @@
               <br />
               <b>김경민</b>
             </a> 
-        </td>
-    </tr>
-    <tr align="center">
-        <td>
+            <br />
             데이터베이스 설계 및 구축, 라즈베리파이 제어, 서버 프로그래밍
         </td>
-    </tr>
-    <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/dksrkn">
               <img src="https://github.com/user-attachments/assets/fd9caf50-49ee-4d77-abcb-5bd2fa0a9da1" width="100">
               <br />
               <b>안가은</b>
             </a> 
-        </td>
-    </tr>
-    <tr align="center">
-        <td>
+            <br />
             라즈베리파이 제어, 서버 프로그래밍, YOLO 모델 훈련
         </td>
-    </tr>
-    <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/NYMoon0408">
               <img src="https://github.com/user-attachments/assets/9a13fb86-778c-4144-8031-a2d7760a2044" width="100">
               <br />
               <b>문나연</b>
             </a> 
-        </td>
-    </tr>
-    <tr align="center">
-        <td>
+            <br />
             앱 프로그래밍, 데이터베이스 설계 및 구축, CNN 모델 설계 및 훈련
         </td>
-    </tr>
-    <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/dilma01">
               <img src="https://github.com/user-attachments/assets/ac99d0ad-4da8-4e29-8c5e-79f89ac5e896" width="100">
               <br />
               <b>정다윤</b>
             </a> 
-        </td>
-    </tr>
-    <tr align="center">
-        <td>
+            <br />
             앱 프로그래밍, CNN 모델 설계 및 훈련
         </td>
-    </tr>
-    <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/0926Hanseo">
               <img src="https://github.com/user-attachments/assets/6d364d9b-ba2d-4315-ac53-c369a2f4bb5f" width="100">
               <br />
               <b>한서현</b>
             </a> 
-        </td>
-    </tr>
-    <tr align="center">
-        <td>
+            <br />
             라즈베리파이 제어, 서버 프로그래밍, YOLO 모델 훈련
         </td>
     </tr>
-  
 </table>
