@@ -73,29 +73,29 @@
 
 ### Frontend  
 <p>
-    <img src="https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white"/>
-    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
-    <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white"/>
-    <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-    <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css3&logoColor=white"/>
+    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white"/>
+    <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+    <img src="https://img.shields.io/badge/css-663399?style=for-the-badge&logo=css3&logoColor=white"/>
 </p>
 
 ### Backend  
 <p>
-    <img src="https://img.shields.io/badge/yolo-111F68?style=flat-square&logo=yolo&logoColor=white"/>
-    <img src="https://img.shields.io/badge/raspberrypi-A22846?style=flat-square&logo=raspberrypi&logoColor=white"/>
-    <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
-    <img src="https://img.shields.io/badge/php-777BB4?style=flat-square&logo=php&logoColor=white"/>
-    <img src="https://img.shields.io/badge/flask-000000?style=flat-square&logo=flask&logoColor=white"/>
-    <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
+    <img src="https://img.shields.io/badge/yolo-111F68?style=for-the-badge&logo=yolo&logoColor=white"/>
+    <img src="https://img.shields.io/badge/raspberrypi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"/>
+    <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+    <img src="https://img.shields.io/badge/php-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
+    <img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white"/>
+    <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"/>
 </p>
 
 ### Tools  
 <p>
-    <img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white"/>
-    <img src="https://img.shields.io/badge/googledocs-4285F4?style=flat-square&logo=googledocs&logoColor=white"/>
-    <img src="https://img.shields.io/badge/jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
-    <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/>
+    <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
+    <img src="https://img.shields.io/badge/googledocs-4285F4?style=for-the-badge&logo=googledocs&logoColor=white"/>
+    <img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
+    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"/>
 </p>
 
 ## 🔷 시스템 구성도 & 라즈베리파이 회로도
