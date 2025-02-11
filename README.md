@@ -1,12 +1,13 @@
 # 베란다집사
 
-<br/>
 <a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
-    <img src="https://github.com/user-attachments/assets/d112e8fb-bc5f-4426-996d-9f635d5d1de9" width="750">
+    <img src="https://img.shields.io/badge/시연 영상 유튜브-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
 </a>
 
-스마트한 식물 관리👍 <br/>
+<br/>
 
+<img src="https://github.com/user-attachments/assets/d112e8fb-bc5f-4426-996d-9f635d5d1de9" width="750">
+<br/>
 <img src="https://github.com/user-attachments/assets/046ab799-dd1a-4fa0-bc09-e4e601d5e763" width="400">
 <img src="https://github.com/user-attachments/assets/5ac8af53-fa0e-4ce2-9d36-f7135fcdc3ad" width="350">
 
@@ -55,20 +56,31 @@
 <img src="https://github.com/user-attachments/assets/4e2d6d3a-d0e9-4093-bdc9-21f2c1603917" width="350"><br/>
 <br/>
 
-## 👩‍💻 기술 스택
-`**Python**`
+## 👩‍💻 기술 스택 & Tools
 
-`**Kotlin**`
-
-`**PHP**`
-
-`**MySQL**`
-
-`**HTML**`
-
-`**CSS**`
-
+### Frontend  
 <br/>
+<img src="https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white"/>  
+<img src="https://img.shields.io/badge/kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>  
+<img src="https://img.shields.io/badge/androidstudio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white"/>  
+<img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"/>  
+<img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css3&logoColor=white"/>  
+
+### Backend  
+<br/>
+<img src="https://img.shields.io/badge/yolo-111F68?style=flat-square&logo=yolo&logoColor=white"/>  
+<img src="https://img.shields.io/badge/raspberrypi-A22846?style=flat-square&logo=raspberrypi&logoColor=white"/>  
+<img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/>  
+<img src="https://img.shields.io/badge/php-777BB4?style=flat-square&logo=php&logoColor=white"/>  
+<img src="https://img.shields.io/badge/flask-000000?style=flat-square&logo=flask&logoColor=white"/>  
+<img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>  
+
+### Tools  
+<br/>
+<img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white"/>  
+<img src="https://img.shields.io/badge/googledocs-4285F4?style=flat-square&logo=googledocs&logoColor=white"/>  
+<img src="https://img.shields.io/badge/jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>  
+<img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/>  
 
 ## 🐸 ProgFriends
 
