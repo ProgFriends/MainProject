@@ -1,7 +1,7 @@
 # 베란다집사
 
 <a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
-    <img src="https://img.shields.io/badge/youtube-FF0000?style=social"/>
+    <img src="https://img.shields.io/badge/ -FF0000?style=social&logo=youtube"/>
 </a> 시연 영상
 
 <br/>
