@@ -120,7 +120,7 @@
 <br/>
 
 ## 📱 애플리케이션 일부 UI
-<img src="https://github.com/user-attachments/assets/3834c110-d713-431f-a66b-16c3e4c1101c" width="500"><br/>
+<img src="https://github.com/user-attachments/assets/3834c110-d713-431f-a66b-16c3e4c1101c" width="750">
 <br/>
 
 ## 🖼️ 실제 시연 사진
