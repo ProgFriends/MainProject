@@ -5,8 +5,9 @@
 </a> 시연 영상
 
 <br/>
-
-<img src="https://github.com/user-attachments/assets/d112e8fb-bc5f-4426-996d-9f635d5d1de9" width="750">
+<a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
+    <img src="https://img.youtube.com/vi/YIy2p0Vz084/maxresdefault.jpg" width="750">
+</a>
 <br/>
 <img src="https://github.com/user-attachments/assets/046ab799-dd1a-4fa0-bc09-e4e601d5e763" width="400">
 <img src="https://github.com/user-attachments/assets/5ac8af53-fa0e-4ce2-9d36-f7135fcdc3ad" width="350">
