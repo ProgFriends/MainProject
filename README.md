@@ -8,11 +8,6 @@
 <a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
     <img src="https://img.youtube.com/vi/YIy2p0Vz084/maxresdefault.jpg" width="750">
 </a>
-<br/>
-<img src="https://github.com/user-attachments/assets/046ab799-dd1a-4fa0-bc09-e4e601d5e763" width="400">
-<img src="https://github.com/user-attachments/assets/5ac8af53-fa0e-4ce2-9d36-f7135fcdc3ad" width="350">
-
-<br/>
 
 ## 🤔 문제현황
 
@@ -32,62 +27,7 @@
 
 <br/>
 
-## ✅ 핵심 기술
-1. 식물 AR
-    - 식물 종류 구분
-    - 식물 실시간 모니터링
-      - 병충해 감지
-      - 토양 습도 값 제공
-      - 대기 온습도 값 제공
-2. 병충해 진단 및 진단서 제공
-    - 병충해를 촬영하여 업로드할 경우 병충해 진단
-    - 해당 병충해에 대한 진단서 제공
-3. 생장환경 자동화
-    - 일정 토양 습도값 미만이 되면 물펌프 자동으로 작동
-    - 대기의 온도, 습도 측정
-
-<br/>
-
-## 📱 애플리케이션 일부 UI
-<img src="https://github.com/user-attachments/assets/3834c110-d713-431f-a66b-16c3e4c1101c" width="500"><br/>
-<br/>
-
-## 🔷 시스템 구성도 & 라즈베리파이 회로도
-<img src="https://github.com/user-attachments/assets/18e7989e-8381-42c3-a51d-83150876c7e3" width="400"><br/>
-<img src="https://github.com/user-attachments/assets/4e2d6d3a-d0e9-4093-bdc9-21f2c1603917" width="350"><br/>
-<br/>
-
-## 👩‍💻 기술 스택 & Tools
-
-### Frontend  
-<p>
-    <img src="https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white"/>
-    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
-    <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white"/>
-    <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-    <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css3&logoColor=white"/>
-</p>
-
-### Backend  
-<p>
-    <img src="https://img.shields.io/badge/yolo-111F68?style=flat-square&logo=yolo&logoColor=white"/>
-    <img src="https://img.shields.io/badge/raspberrypi-A22846?style=flat-square&logo=raspberrypi&logoColor=white"/>
-    <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
-    <img src="https://img.shields.io/badge/php-777BB4?style=flat-square&logo=php&logoColor=white"/>
-    <img src="https://img.shields.io/badge/flask-000000?style=flat-square&logo=flask&logoColor=white"/>
-    <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
-</p>
-
-### Tools  
-<p>
-    <img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white"/>
-    <img src="https://img.shields.io/badge/googledocs-4285F4?style=flat-square&logo=googledocs&logoColor=white"/>
-    <img src="https://img.shields.io/badge/jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
-    <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/>
-</p>
-
-
-## 🐸 ProgFriends
+## 🐸 Developers
 
 <table>
     <tr align="center">
@@ -138,3 +78,67 @@
         </td>
     </tr>
 </table>
+
+## 👩‍💻 기술 스택 & Tools
+
+### Frontend  
+<p>
+    <img src="https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white"/>
+    <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+    <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css3&logoColor=white"/>
+</p>
+
+### Backend  
+<p>
+    <img src="https://img.shields.io/badge/yolo-111F68?style=flat-square&logo=yolo&logoColor=white"/>
+    <img src="https://img.shields.io/badge/raspberrypi-A22846?style=flat-square&logo=raspberrypi&logoColor=white"/>
+    <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+    <img src="https://img.shields.io/badge/php-777BB4?style=flat-square&logo=php&logoColor=white"/>
+    <img src="https://img.shields.io/badge/flask-000000?style=flat-square&logo=flask&logoColor=white"/>
+    <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
+</p>
+
+### Tools  
+<p>
+    <img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white"/>
+    <img src="https://img.shields.io/badge/googledocs-4285F4?style=flat-square&logo=googledocs&logoColor=white"/>
+    <img src="https://img.shields.io/badge/jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
+    <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/>
+</p>
+
+## 🔷 시스템 구성도 & 라즈베리파이 회로도
+<img src="https://github.com/user-attachments/assets/18e7989e-8381-42c3-a51d-83150876c7e3" width="400"><br/>
+<img src="https://github.com/user-attachments/assets/4e2d6d3a-d0e9-4093-bdc9-21f2c1603917" width="350"><br/>
+<br/>
+
+## ✅ 핵심 기술
+1. 식물 AR
+    - 식물 종류 구분
+    - 식물 실시간 모니터링
+      - 병충해 감지
+      - 토양 습도 값 제공
+      - 대기 온습도 값 제공
+2. 병충해 진단 및 진단서 제공
+    - 병충해를 촬영하여 업로드할 경우 병충해 진단
+    - 해당 병충해에 대한 진단서 제공
+3. 생장환경 자동화
+    - 일정 토양 습도값 미만이 되면 물펌프 자동으로 작동
+    - 대기의 온도, 습도 측정
+
+<br/>
+
+## 📱 애플리케이션 일부 UI
+<img src="https://github.com/user-attachments/assets/3834c110-d713-431f-a66b-16c3e4c1101c" width="500"><br/>
+<br/>
+
+## 🖼️ 실제 시연 사진
+<img src="https://github.com/user-attachments/assets/046ab799-dd1a-4fa0-bc09-e4e601d5e763" width="400">
+<img src="https://github.com/user-attachments/assets/5ac8af53-fa0e-4ce2-9d36-f7135fcdc3ad" width="350">
+<br/>
+
+
+
+
+
