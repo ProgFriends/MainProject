@@ -1,14 +1,4 @@
 # 베란다집사
-
-<a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
-    <img src="https://img.shields.io/badge/ -FF0000?style=social&logo=youtube"/>
-</a> 시연 영상
-
-<br/>
-<a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
-    <img src="https://img.youtube.com/vi/YIy2p0Vz084/maxresdefault.jpg" width="750">
-</a>
-
 ## 🤔 문제현황
 
 #### 장기간 집을 비워 식물이 시든 경험
@@ -137,6 +127,17 @@
 <img src="https://github.com/user-attachments/assets/046ab799-dd1a-4fa0-bc09-e4e601d5e763" width="400">
 <img src="https://github.com/user-attachments/assets/5ac8af53-fa0e-4ce2-9d36-f7135fcdc3ad" width="350">
 <br/>
+
+## 🎥 발표 & 시연 영상
+
+<a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
+    <img src="https://img.shields.io/badge/ -FF0000?style=social&logo=youtube"/>
+</a> 발표 & 시연 영상
+
+<br/>
+<a href="https://www.youtube.com/watch?v=YIy2p0Vz084" target="_blank">
+    <img src="https://img.youtube.com/vi/YIy2p0Vz084/maxresdefault.jpg" width="750">
+</a>
 
 
 
